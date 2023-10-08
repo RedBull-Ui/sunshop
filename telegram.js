@@ -25,3 +25,11 @@ produitsDansLePanier.forEach((produit) => {
   bot.sendMessage(chatId, message);
   alert('envoyer !')
 });
+
+
+
+
+ // "scripts": {
+  //   "test": "echo \"Error: no test specified\" && exit 1",
+  //   "start": "nodemon app"
+  // }
