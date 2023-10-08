@@ -121,6 +121,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Erreur interne du serveur' });
 });
 
-app.listen(3000, () => {
-  console.log('Le serveur est lancé sur le port 3000 !');
+// app.listen(3000, () => {
+//   console.log('Le serveur est lancé sur le port 3000 !');
+// });
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
