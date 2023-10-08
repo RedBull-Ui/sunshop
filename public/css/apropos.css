@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+/* ---------------burger menu -------------------  */
+
+nav #menu{
+    display: none;
+    }
+    nav #burger-menu{
+        display: none;
+        }
+    
+    nav .burger-menu{
+        position: absolute;
+        top: 0px;
+        right: 0%;
+        width: 70%;
+        /*background-color: #ededed;*/
+        backdrop-filter: blur(10px); /* Augmentez la valeur de flou selon votre préférence */
+        -webkit-backdrop-filter: blur(10px); /* Pour la compatibilité avec les navigateurs WebKit */
+        background-color: rgba(255, 255, 255, 0.5); 
+        height: 100vh;
+    }
+    
+    .burger-menu ul {
+        margin-top: 40px;
+    }
+    nav .sac{
+        display: none;
+    }
+    nav #me{
+        display: none;
+        }
+               /* barre de recherche  */
+       .group {
+        display: none;
+  
+       }
+      /* barre de recherche  */
+    
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+body nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    z-index: 7;
+}
+
+nav .brand {
+    margin-right: 20%; /* Réduire la marge pour les mobiles */
+    font-size: large;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+body nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    list-style: none;
+    margin-right:30%;
+}
+
+nav ul a {
+    cursor: pointer;
+    color: black;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.focus a {
+    color: #0A9EBF;
+    font-weight: bolder;
+}
+
+nav ul a:hover {
+
+    color: #0A9EBF;
+
+}
+
+nav #sac {
+    color: grey;
+    font-size: 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav #sac:hover {
+    color: #0A9EBF;
+}
+
+body .hastag {
+    margin-top: 20px;
+    width: 100%;
+    min-height: 310px;
+    background: url(/img/fleurs.jpg) center/cover no-repeat;
+}
+
+.hastag .overlay {
+    height: 310px;
+    background-color: rgba(0, 0, 0, 0.327);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.row .left {
+    height: auto; /* Pour s'adapter au contenu */
+}
+
+.row .left img {
+    width: 100%; /* Ajuster la largeur à 100% */
+    max-width: 500px; /* Limiter la largeur pour les mobiles */
+    height: auto; /* Pour conserver les proportions */
+}
+
+.row .right {
+    padding: 20px; /* Réduire la marge pour les mobiles */
+}
+
+.right h1 {
+    color: #333;
+    font-size: 18px; /* Réduire la taille pour les mobiles */
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+}
+
+right p {
+    color: #666;
+    font-size: 1rem; /* Réduire la taille pour les mobiles */
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+}
+
+body .news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(7, 7, 76);
+    padding: 15px; /* Réduire la marge pour les mobiles */
+    margin-top: 190px;
+    color: white;
+    width: 100%;
+}
+
+body footer {
+    background-color: aliceblue;
+    padding: 20px; /* Réduire la marge pour les mobiles */
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer .store {
+    padding: 10px;
+    width: 128px;
+    font-size: 0.9rem;
+    border: 1px solid grey;
+    border-radius: 11px;
+    margin-top: 10px;
+}
+
+body li {
+    cursor: pointer;
+}
+
+/* Media query pour les téléphones mobiles */
+@media (max-width: 768px) {
+
+    /* -------------burger menu--------------  */
+    nav .burger-menu{
+        display: none;
+        height: 80vh;
+        width: 80%;
+        top: 0;
+        right: 0;
+        position: absolute;
+        border-radius: 66% 34% 0% 100% / 24% 0% 100% 76%;
+
+        backdrop-filter: blur(10px); /* Ajustez la valeur de flou selon vos préférences */
+  background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond floue avec opacité */
+  /* Autres styles pour votre élément */
+    }
+    .burger-menu ul {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+      }
+    
+    nav #nav-links {
+        display: none;
+    }
+    
+    body #top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 8px;
+        
+        position: fixed;
+        top: 0;
+        background-color: white;
+        width: 100%;
+        z-index: 7;
+    }
+
+    nav #nav-links {
+        display: none;
+      }
+      nav #me{
+        display: block;
+        margin-left: 15px;
+    }
+    .close {
+      display: none;
+      margin-left: 100px;
+    }
+    .open{
+      display: block;
+    }
+      body nav {
+        padding: 8px 10px; /* Réduire la marge pour les mobiles */
+      }
+    
+      nav .brand {
+        margin-right:35%; /* Further reduce the margin for smaller screens */
+        font-size: large;
+        font-weight: bolder;
+        cursor: pointer;
+     }
+     nav ul a {
+        /*  margin-bottom: 25px; Add space between navigation links */
+        font-family: 'Concert One', cursive;
+         font-size: 1rem;
+         color:  rgba(0, 0, 0, 0.668);
+         margin-top: 0px;
+         text-transform: uppercase;
+         text-decoration: none;
+         font-weight: bolder;
+         font-family: 'Young Serif', serif;
+         letter-spacing: 5px;
+      
+      }
+    #barre-top {
+        display: none;
+       }
+      #barre-bottom {
+        display: none;
+       }
+       nav #sac{
+        display: none;
+     }
+     nav #sac2{
+        display: block;
+     }
+    body .hastag {
+        min-height: 200px; /* Ajuster la hauteur pour les mobiles */
+    }
+
+    .row {
+        padding: 25px;
+    }
+    .row .left img {
+        max-width: 100%; /* Ajuster la largeur à 100% pour les mobiles */
+    }
+
+    .row .right {
+        padding: 10px; /* Ajuster la marge pour les mobiles */
+    }
+
+    right h1 {
+        font-size: 16px; /* Ajuster la taille pour les mobiles */
+    }
+
+    right p {
+        font-size: 0.9rem; /* Ajuster la taille pour les mobiles */
+    }
+
+    body .news {
+        padding: 10px; /* Ajuster la marge pour les mobiles */
+    }
+
+    body footer {
+        padding: 10px; /* Ajuster la marge pour les mobiles */
+    }
+}

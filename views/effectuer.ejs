@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/effectuer.css">
+    <title>Commande Effectuée</title>
+    <script>
+        // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
+        function localStorageNeContientPasProduits() {
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key.startsWith("produit_")) {
+                            return false; // Le localStorage contient au moins une clé commençant par "produit_"
+                        }
+                    }
+                    return true; // Aucune clé commençant par "produit_" trouvée
+                }
+
+                // Exemple d'utilisation
+                if (localStorageNeContientPasProduits()) {
+                    // Effectuez une action si le localStorage ne contient pas de clés "produit_"
+                    window.location.href = "/panier";
+
+                    console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
+                } else {
+                    console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
+                }
+
+
+    </script>
+    
+
+</head>
+<body>
+    <header>
+        <h1>Commande Effectuée avec Succès</h1>
+    </header>
+    <main>
+        <section class="order-details">
+            <h2>Détails de la commande</h2>
+            <p>Merci pour votre commande ! Voici les détails de votre achat :</p> <br> <br>
+            
+                <p id="6"></p>
+                <p id="prix_6"></p>
+            
+             
+        </section>
+        <section class="confirmation-message">
+            <p>Votre commande a été passée avec succès. Elle sera traitée dans les plus brefs délais.</p>
+            <p>Un assistant vous contactera pour vous faire livrer</p>
+            <p>Merci de faire confiance à SunShop !</p>
+            <a onclick="retour()" class="btn-return">Retour à la Boutique</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 SunShop</p>
+    </footer>
+</body>
+<script>
+    var produit_6 = localStorage.getItem('produit_6');
+   
+   // Si les données existent dans le localStorage
+   if (produit_6) {
+       // Convertir les données JSON en objet
+       const objetDeDonnees = JSON.parse(produit_6);
+   
+       // Maintenant, vous pouvez accéder aux propriétés de l'objet
+       document.getElementById('6').innerText = objetDeDonnees.nom;
+       document.getElementById('prix_6').innerText = objetDeDonnees.prix;
+       // ... et ainsi de suite pour d'autres propriétés que vous souhaitez afficher
+   
+       // // Si vous avez des images, vous pouvez également les afficher
+       // const image = document.createElement('img');
+       // image.src = objetDeDonnees.url;
+       // document.getElementById('image_6').appendChild(image);
+   }
+   
+   function retour(){
+   // Parcourez les clés du Local Storage
+for (let key in localStorage) {
+  // Vérifiez si la clé commence par "produit_"
+  if (key.startsWith("produit_")) {
+    // Si c'est le cas, supprimez cette clé
+    localStorage.removeItem(key);
+  }
+}
+
+
+    window.location.href = '/boutique';
+   }
+           
+       </script>
+
+</html>

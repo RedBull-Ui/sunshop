@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+/* ---------------burger menu -------------------  */
+
+nav #menu{
+    display: none;
+    }
+    nav #me{
+        display: none;
+    }
+           /* barre de recherche  */
+           .group {
+            display: none;
+      
+           }
+          /* barre de recherche  */
+    nav .burger-menu{
+        position: absolute;
+        top: 0px;
+        z-index: 14;
+        right: 0%;
+        width: 70%;
+        background-color: #ededed;
+        min-height: 100vh;
+        display: none;
+    }
+    
+    .burger-menu ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }/* ---------------burger menu -------------------  */
+
+nav #menu{
+    display: none;
+    }
+    body nav .sac {
+        display: none;
+    }
+    
+    nav .burger-menu{
+        position: absolute;
+        top: 0px;
+        z-index: 14;
+        right: 0%;
+        width: 70%;
+        background-color: #ededed;
+        min-height: 100vh;
+    }
+    
+    .burger-menu ul {
+        margin-top: 40px;
+    }
+
+body {
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+body nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    z-index: 7;
+}
+
+nav .brand {
+    margin-right: 20%; /* Réduire la marge pour les mobiles */
+    font-size: large; /* Réduire la taille de la police pour les mobiles */
+}
+
+body nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-right:30%;
+
+}
+
+nav ul a {
+    cursor: pointer;
+    color: black;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.panier {
+    color: #0A9EBF;
+    font-weight: bolder;
+}
+
+.focus a {
+    color: #0A9EBF;
+    font-weight: bolder;
+}
+
+nav ul a:hover {
+
+    color: #0A9EBF;
+}
+
+nav #sac {
+    color: grey;
+    font-size: 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav #sac:hover {
+    color: rgb(43, 221, 43);
+}
+
+body h4 {
+    margin-top: 120px; /* Ajuster la marge pour les téléphones */
+    text-align: center;
+    font-size: 1.5rem; /* Réduire la taille de la police pour les téléphones */
+}
+
+body .row {
+    margin-top: 20px; /* Ajuster la marge pour les téléphones */
+    padding: 10px;
+}
+
+.row p {
+    font-size: 1.3rem;
+}
+
+/* .col-md-2 button {
+    height: 40px; /* Ajuster la hauteur pour les téléphones */
+   /*  width: 60px; /* Ajuster la largeur pour les téléphones */
+   /*  border: 1px solid rgb(36, 225, 36);
+    border-radius: 9px;
+    background-color: rgba(42, 251, 42, 0.391);
+    font-size: 1rem; /* Réduire la taille de la police pour les téléphones */
+   /*  transition: 0.3s;
+}
+
+.col-md-2 button:hover {
+    border: 1px solid rgb(36, 225, 36);
+    font-size: 0.9rem; /* Réduire la taille de la police au survol pour les téléphones */
+   /*  background-color: white;
+/* }*/ 
+.col-md-2 #envoyerTelegram2 {
+    display: none;
+}
+
+button {
+    appearance: button;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99999975;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  
+  button:after {
+    background-clip: padding-box;
+    background-color: #FEC195;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+  
+  button:main, button:focus {
+    user-select: auto;
+  }
+  
+  button:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+  
+  button:disabled {
+    cursor: auto;
+  }
+  
+  button:active:after {
+    border-width: 0 0 0px;
+  }
+  
+  button:active {
+    padding-bottom: 10px;
+  }
+
+.col-md-6 input {
+    width: 100%;
+    height: 40px; /* Ajuster la hauteur pour les téléphones */
+    border: 1px solid rgba(128, 128, 128, 0.339);
+    border-radius: 9px;
+    padding-left: 10px;
+    outline: none;
+    margin-bottom: 10px;
+    font-size: 1rem; /* Réduire la taille de la police pour les téléphones */
+}
+
+.col-md-4 input {
+    width: 100%;
+    height: 40px; /* Ajuster la hauteur pour les téléphones */
+    margin-bottom: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.339);
+    border-radius: 9px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 1rem; /* Réduire la taille de la police pour les téléphones */
+}
+
+/* Media query pour les téléphones mobiles */
+@media (max-width: 768px) {
+
+    /* -------------burger menu--------------  */
+    nav #nav-links {
+        display: none;
+    }
+
+    nav .brand {
+        margin-right:35%; /* Further reduce the margin for smaller screens */
+        font-size: large;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    body nav .sac {
+        display: none;
+    }
+    #barre-top {
+        display: none;
+       }
+      #barre-bottom {
+        display: none;
+       }
+       nav #sac{
+        display: none;
+     }
+     nav #sac2{
+        display: none;
+     }
+    body h4 {
+        margin-top: 90px; /* Ajuster la marge pour les téléphones */
+        font-size: 1.2rem; /* Réduire la taille de la police pour les téléphones */
+    }
+ 
+
+    body .row {
+        margin-top: 90px; /* Ajuster la marge pour les téléphones */
+    }
+    form .col-md-6 input{
+        height: 50px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    form .col-md-4 input{
+        height: 50px;
+        width: 100%;
+    }
+
+    /* .col-md-2 button {
+        margin-top: 40px;
+        height: 50px; /* Ajuster la hauteur pour les téléphones */
+       /*  width: 100%; Ajuster la largeur pour les téléphones */
+        /* font-size: 0.9rem; /* Réduire la taille de la police pour les téléphones */
+   /*  } */
+   .col-md-2 #envoyerTelegram{
+    display: none;
+   }
+   .col-md-2 #envoyerTelegram2 {
+    appearance: button;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99999947;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  button:after {
+    background-clip: padding-box;
+    background-color: #FEC195;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+  
+  button:main, button:focus {
+    user-select: auto;
+  }
+  
+  button:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+  
+  button:disabled {
+    cursor: auto;
+  }
+  
+  button:active:after {
+    border-width: 0 0 0px;
+  }
+  
+  button:active {
+    padding-bottom: 10px;
+  }
+
+    .col-md-2 button:hover {
+        font-size: 0.8rem; /* Réduire la taille de la police au survol pour les téléphones */
+    }
+
+    .col-md-6 input,
+    .col-md-4 input {
+        height: 30px; /* Ajuster la hauteur pour les téléphones */
+        font-size: 0.9rem; /* Réduire la taille de la police pour les téléphones */
+    }
+}

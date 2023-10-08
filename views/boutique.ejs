@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+       <!-- Balise meta pour la description de la page (méta-description) -->
+       <meta name="description" content="Découvrez notre large gamme de compléments alimentaires">
+
+       <!-- Balise meta pour les mots-clés (méta-keywords) -->
+       <meta name="keywords" content="compléments alimentaires, Medical, santer">
+   
+       <!-- Balise meta pour l'auteur -->
+       <meta name="author" content="Sun shop">
+   
+       <!-- Balise meta pour la distribution -->
+       <meta name="distribution" content="global">
+   
+       <!-- Balise meta pour l'indexation des robots -->
+       <meta name="robots" content="index, follow">
+   
+       <!-- Balise meta pour le viewport (pour les appareils mobiles) -->
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- BOOSTRAPP ICI  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <!-- awesome here  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/boutique.css">
+    <title>Mes produits</title> <br>
+
+    <script>
+        localStorage.setItem('state','boutique')
+    </script>
+</head>
+<body>
+    <%- include('composants/nav.ejs')  %>
+
+    <div class=" hastag">
+        <div class="overlay">
+            #laSantéEstPrécieuse
+        </div>
+    </div>
+    <br>
+    <h1 style="text-align: center;">Nos Produits</h1> <br>
+
+    <div class="radio-inputs">
+        <label class="radio">
+          <input type="radio" name="radio" checked="">
+          <span class="name">TOUT</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="radio">
+          <span class="name">SANTER</span>
+        </label>
+            
+        <label class="radio">
+          <input type="radio" name="radio">
+          <span class="name">BEAUTE</span>
+        </label>
+      </div>
+
+    <div class="row">
+        <% produits.forEach((produit) => { %>
+            <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>">
+                <div class="card shadow-sm">
+                <div class="cardTop">
+                    <img src="<%= produit.url %>" alt="">
+                </div>
+                <div class="cardBottom">
+                    <h6><%= produit.nom %></h6>
+                    
+                    <!-- Bouton "voir plus" (vous pouvez ajouter le contenu souhaité ici) -->
+                    <p class="d-inline-flex gap-1">
+                        <a class="" data-bs-toggle="collapse" href="#collapseExample_<%= produit.id %>" role="button" aria-expanded="false" aria-controls="collapseExample_<%= produit.id %>">
+                            Voir plus...
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample_<%= produit.id %>">
+                        <div class="">
+                            <!-- Contenu du "voir plus" -->
+                            <%= produit.description %>
+                        </div>
+                    </div>
+
+                    <div class="cardFooter">
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <!-- Affichage des étoiles (si vous avez un champ "évaluation" dans votre base de données) -->
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <!-- Affichage du prix -->
+                            <p style="color: rgb(44, 190, 44);"><%= produit.prix %> CFA</p>
+                            <div class="panierTonne ajouter-au-panier" data-id="<%= produit.id %>"
+                                data-prix="<%= produit.prix %>"
+                                data-nom="<%= produit.nom %>"
+                                data-description="<%= produit.description %>"
+                                data-url="<%= produit.url %>">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <!-- ... Autre contenu de la page ... -->
+
+    <div class="news">
+        <h3>Sign Up for Newsletters</h3>
+        <p>Get E-mail updates about our latest shop and <span style="color: gold;">special offers .</span> </p>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <p style="font-weight: bolder;">Contact</p>
+                    <li>Adress :</li>
+                    <li>Telephone :</li>
+                    <li>Horaires :</li> <br> <br>
+                    <p>FOLLOW Us</p>
+                </ul>
+
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    <p style="font-weight: bolder;">About</p>
+                    <li>About Us</li>
+                    <li>Delivery information</li>
+                    <li>Terme & Conditions</li>
+                    <li>Contact Us</li>
+                </ul>
+
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    <p style="font-weight: bolder;">My Account</p>
+                    <li>Sign In </li>
+                    <li>View cart</li>
+                    <li>Track my Oder</li>
+                    <li>Help</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <p style="font-weight: bolder;">Install App</p>
+                <span style="text-align: center;">From App Store or Google Play</span> <br>
+                <div style="display: flex; justify-content: space-between;">
+                    <button class="store"><i class="fa-brands fa-apple"></i> App Store</button>
+                    <button class="store"><i class="fa-brands fa-google-play"></i> Google Play</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyRight d-flex align-center justify-content-center align-items-center pt-md-10">
+            <p>© 2023 SunShop . Tous droits réservés. </p>
+        </div>
+    </footer>
+    
+    <!-- bosstrap js ici  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+    <!-- cdn gsap ici -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>         -->
+    <script src="/script/boutique.js"></script>
+    <script src="/script/index.js"></script>
+
+</body>
+<script>
+    // Vérifiez s'il y a au moins une clé Local Storage commençant par "produit_"
+let hasProduitKeys = false;
+for (let key in localStorage) {
+  if (key.startsWith("produit_")) {
+    hasProduitKeys = true;
+    break;
+  }
+}
+
+// Sélectionnez votre icône de panier (supposons que son ID est "icon-panier")
+const iconPanier = document.getElementById("sac2");
+const iconPanier2 = document.getElementById("sac");
+
+// Ajoutez ou supprimez la classe "point-rouge" en fonction de la condition
+if (hasProduitKeys) {
+  iconPanier.classList.add("point-rouge");
+  iconPanier2.classList.add("point-rouge");
+} else {
+  iconPanier.classList.remove("point-rouge");
+  iconPanier2.classList.remove("point-rouge");
+}
+
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64ac812894cf5d49dc62c113/1h50th2c3';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</html>
