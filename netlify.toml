@@ -17,7 +17,7 @@
     Cache-Control = "public, max-age=3600"
 
 # Configuration des fonctions Netlify
-[[functions]]
+[functions]
   name = "exemple-fonction"
   path = "fonctions/exemple.js"
   memory = 256
