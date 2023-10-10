@@ -4,8 +4,7 @@
   "description": "site pour vente de complement alimentaire",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "npm run build"
+    "start": "node app.js"
   },
   "author": "redbull",
   "license": "ISC",
@@ -23,6 +22,6 @@
     "querystring": "^0.2.1"
   },
   "devDependencies": {
-    
+
   }
 }
