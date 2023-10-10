@@ -264,9 +264,13 @@ select {
   color: gold;
 }
 
-.card .cardTop img {
+/* .card .cardTop img {
   width: 120px;
   height: 100px;
+} */
+.card .cardTop img {
+  height: auto; /* Ajuster la hauteur des images pour les mobiles */
+  width: 150px;
 }
 
 .card .panierTonne {
