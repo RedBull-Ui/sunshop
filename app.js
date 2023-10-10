@@ -45,7 +45,7 @@ app.get('/boutique', (req, res) => {
       // Fermez la connexion après avoir récupéré les données
       connection.end();
 
-        res.render('boutique', { produits: rows });
+        res.render('boutique.ejs', { produits: rows });
       }
   });
 });
