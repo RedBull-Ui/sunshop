@@ -42,7 +42,7 @@ app.get('/boutique', (req, res) => {
           console.error('Erreur lors de la récupération des données :', err);
           res.status(500).json({ error: 'Erreur de base de données' });
       } else {
-        res.render('boutique', { produits: rows });
+        res.render('boutique.ejs', { produits: rows });
       }
   });
 });
@@ -67,20 +67,20 @@ app.post('/ajouter-au-panier', (req, res) => {
 
 app.get('/panier', (req, res) => {
   // Affichez les produits ajoutés côté client dans la vue panier.ejs
-  res.render('panier', { produitsDansLePanier });
+  res.render('panier.ejs', { produitsDansLePanier });
 });
 
 app.get('/contact', function (req, res) {
-  res.render('contact');
+  res.render('contact.ejs');
 });
 app.get('/apropos', function (req, res) {
-  res.render('apropos');
+  res.render('apropos.ejs');
 });
 app.get('/regler', function (req, res) {
-  res.render('regler');
+  res.render('regler.ejs');
 });
 app.get('/effectuer', function (req, res) {
-  res.render('effectuer');
+  res.render('effectuer.ejs');
 });
 
 // ... Autres configurations et routes ...
