@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="cardBottom">
             <h6>${produit.nom}</h6>
-            <p>${produit.description}</p>
+            
             <div class="cardFooter">
                 <div class="prix-quantite">
                     <!-- Affichage du prix -->
