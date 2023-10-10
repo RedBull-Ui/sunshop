@@ -43,7 +43,7 @@ app.get('/boutique', (req, res) => {
           res.status(500).json({ error: 'Erreur de base de données' });
       } else {
       // Fermez la connexion après avoir récupéré les données
-      connection.end();
+      // connection.end();
 
         res.render('boutique.ejs', { produits: rows });
       }
