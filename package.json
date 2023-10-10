@@ -7,7 +7,7 @@
     "start": "node app.js",
     "build": "npm run build"
   },
-  "author": "redbull ux",
+  "author": "redbull",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
@@ -23,7 +23,6 @@
     "querystring": "^0.2.1"
   },
   "devDependencies": {
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    
   }
 }

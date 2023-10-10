@@ -94,8 +94,13 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
     }).join('\n');
 
   // Remplacez 'YOUR_BOT_TOKEN' et 'CHAT_ID' par les valeurs appropriées
-  const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
-  const chatId = '1016981131';
+  // const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
+  // const chatId = '1016981131';
+  const botToken = process.env.BOT_TOKEN;
+  const chatId = process.env.CHAT_ID;
+
+// Utilisez botToken et chatId dans votre code
+
 
   try {
     const response = await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
