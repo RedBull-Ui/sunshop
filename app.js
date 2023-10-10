@@ -7,6 +7,8 @@ const path = require('path');
 const axios = require('axios'); // Importez Axios
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 // Configuration de la connexion à la base de données en utilisant des variables d'environnement
 const connection = mysql.createConnection({
@@ -29,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index.ejs');
 });
 
 app.get('/boutique', (req, res) => {
