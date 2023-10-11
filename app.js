@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -11,20 +11,14 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 // Configuration de la connexion à la base de données en utilisant des variables d'environnement
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
+  connectionLimit: 10,
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Erreur de connexion à la base de données :', err);
-  } else {
-    console.log('Connecté à la base de données MySQL');
-  }
-});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,16 +31,13 @@ app.get('/', function (req, res) {
 app.get('/boutique', (req, res) => {
   const sql = 'SELECT * FROM produits';
 
-  connection.query(sql, (err, rows) => {
-      if (err) {
-          console.error('Erreur lors de la récupération des données :', err);
-          res.status(500).json({ error: 'Erreur de base de données' });
-      } else {
-      // Fermez la connexion après avoir récupéré les données
-      // connection.end();
-
-        res.render('boutique.ejs', { produits: rows });
-      }
+  pool.query(sql, (err, rows) => {
+    if (err) {
+      console.error('Erreur lors de la récupération des données :', err);
+      res.status(500).json({ error: 'Erreur de base de données' });
+    } else {
+      res.render('boutique.ejs', { produits: rows });
+    }
   });
 });
 
