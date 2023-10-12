@@ -341,7 +341,8 @@ button {
 
   button:after {
     background-clip: padding-box;
-    background-color: #FEC195;
+    /* background-color: #FEC195; */
+    background-color: #44c767;
     border: solid transparent;
     border-radius: 16px;
     border-width: 0 0 4px;
