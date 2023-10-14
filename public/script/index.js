@@ -47,26 +47,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     ////////// la recherche ici ../////////
 
-    ///////// ratio button ici //////
-    function ratio() {
-        // Fonction pour filtrer les cartes en fonction de la catégorie sélectionnée
-        function filtrerCartesParCategorie(categorie) {
-            const productCards = document.querySelectorAll('.product-card');
+    // ///////// ratio button ici //////
+    // function ratio() {
+    //     // Fonction pour filtrer les cartes en fonction de la catégorie sélectionnée
+    //     function filtrerCartesParCategorie(categorie) {
+    //         const productCards = document.querySelectorAll('.product-card');
 
-            productCards.forEach((card) => {
-                const cardCategorie = card.getAttribute('data-categorie').toLowerCase();
+    //         productCards.forEach((card) => {
+    //             const cardCategorie = card.getAttribute('data-categorie').toLowerCase();
 
-                if (categorie === 'tout' || cardCategorie.includes(categorie)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    }
-
-
-
+    //             if (categorie === 'tout' || cardCategorie.includes(categorie)) {
+    //                 card.style.display = 'block';
+    //             } else {
+    //                 card.style.display = 'none';
+    //             }
+    //         });
+    //     }
+    // }
 
 
 });
