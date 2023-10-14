@@ -528,6 +528,8 @@ nav #nav-links {
 
     .row .card {
         margin-bottom: 15px;
+        margin: auto;
+
     }
 
     .card .cardTop img {
