@@ -63,63 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
-        // Obtenir les éléments radio
-        const radioTout = document.getElementById('radio-tout');
-        const radioSanter = document.getElementById('radio-santer');
-        const radioBeaute = document.getElementById('radio-beaute');
-
-        // Ajouter des gestionnaires d'événements aux boutons radio
-        radioTout.addEventListener('change', function () {
-            filtrerCartesParCategorie('tout');
-        });
-
-        radioSanter.addEventListener('change', function () {
-            filtrerCartesParCategorie('santer');
-        });
-
-        radioBeaute.addEventListener('change', function () {
-            filtrerCartesParCategorie('beaute');
-        });
-
     }
-    ratio();
-
-    ///////// ratio button ici //////
 
 
-
-
-    // Le reste de votre code ici...
-    // Vérifiez si l'animation a déjà été jouée en vérifiant le stockage local
-    // var animationExecuted = localStorage.getItem('animationExecuted');
-
-    //if (!animationExecuted) {
-    // L'animation n'a pas encore été exécutée, jouez-la ici
-
-    // Exemple d'animation GSAP (ajoutez ici votre code GSAP)
-    // gsap.to('.element', { /* paramètres d'animation */ });
-
-    // Marquez que l'animation a été exécutée dans le stockage local
-    // localStorage.setItem('animationExecuted', 'true');
-    // }
-
-
-
-    // Le reste de votre code ici
-
-    // Le code pour la pause de l'animation en fonction de la largeur de l'écran
-    // var nav = document.getElementById('top');
-    // var tl = gsap.timeline();
-
-    // const anime2 = tl.fromTo('button', { x: -200, opacity: 0, delay: 1 }, { x: 0, opacity: 1 });
-    // const anime3 = tl.from('img', { duration: 2, ease: "bounce.out", x: 600 });
-
-    // const screenWidth = window.innerWidth;
-
-    // if (screenWidth <= 766) {
-    //     anime3.pause();
-    // }
 
 
 
