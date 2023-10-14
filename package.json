@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "redbull",
+  "author": "privat kouadio",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
