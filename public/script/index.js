@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded', gérerÉtatMenu);
 function boutique() {
     window.location.href = '/boutique'
 }
+function home() {
+    window.location.href = '/'
+}
 // Toggle the burger menu on click
 
 
