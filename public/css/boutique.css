@@ -235,10 +235,8 @@ body .row {
     width: 100%; /* Ajuster la largeur des cartes pour les mobiles */
     padding: 10px;
     border-radius: 20px;
-    margin-bottom: 20px; /* Ajuster l'espacement entre les cartes pour les mobiles */
+    margin-bottom: 20px;  /* Ajuster l'espacement entre les cartes pour les mobiles */
     cursor: pointer;
-    margin-top: 10px;
-
 }
 
 .card a {
