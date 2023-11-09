@@ -41,8 +41,6 @@
             <h2>Détails de la commande</h2>
             <p>Merci pour votre commande ! Voici les détails de votre achat :</p> <br> <br>
             
-
-
                
             
              
@@ -59,24 +57,46 @@
     </footer>
 </body>
 <script>
-    var produit_6 = localStorage.getItem('produit_6');
-   
-   // Si les données existent dans le localStorage
-   if (produit_6) {
-       // Convertir les données JSON en objet
-       const objetDeDonnees = JSON.parse(produit_6);
-   
-       // Maintenant, vous pouvez accéder aux propriétés de l'objet
-       document.getElementById('6').innerText = objetDeDonnees.nom;
-       document.getElementById('prix_6').innerText = objetDeDonnees.prix;
-       // ... et ainsi de suite pour d'autres propriétés que vous souhaitez afficher
-   
-       // // Si vous avez des images, vous pouvez également les afficher
-       // const image = document.createElement('img');
-       // image.src = objetDeDonnees.url;
-       // document.getElementById('image_6').appendChild(image);
-   }
-   
+ document.addEventListener("DOMContentLoaded", function() {
+    // Fonction pour vérifier si le localStorage contient des clés commençant par "produit_"
+    function localStorageNeContientPasProduits() {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith("produit_")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Fonction pour afficher les noms des produits depuis le localStorage
+    function afficherNomsProduits() {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.startsWith("produit_")) {
+                const produitData = JSON.parse(localStorage.getItem(key));
+                // Afficher le nom du produit dans la section des détails de la commande
+                const elementNomProduit = document.createElement('p');
+                elementNomProduit.innerText = produitData.nom;
+                document.querySelector('.order-details').appendChild(elementNomProduit);
+            }
+        }
+    }
+
+    // Vérifier si le localStorage contient des clés commençant par "produit_"
+    if (localStorageNeContientPasProduits()) {
+        window.location.href = "/panier";
+        console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
+    } else {
+        console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
+        // Appeler la fonction pour afficher les noms des produits
+        afficherNomsProduits();
+    }
+
+    // Autres fonctions et code...
+
+});
+
    function retour(){
    // Parcourez les clés du Local Storage
 for (let key in localStorage) {
