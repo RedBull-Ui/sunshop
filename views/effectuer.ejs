@@ -41,8 +41,17 @@
             <h2>Détails de la commande</h2>
             <p>Merci pour votre commande ! Voici les détails de votre achat :</p> <br> <br>
             
-                <p id="6"></p>
-                <p id="prix_6"></p>
+
+
+                <% produits.forEach((produit) => { %>
+                    <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>" style="height: auto;">
+                       
+                                <p>
+                                    <%= produit.nom %>
+                                </p>       
+                                        
+                </div>
+                <% }); %>
             
              
         </section>
