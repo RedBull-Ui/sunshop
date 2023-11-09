@@ -66,7 +66,7 @@
 
     <div class="row">
         <% produits.forEach((produit) => { %>
-            <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>">
+            <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>" style="height: auto;">
                 <div class="card mb-10 shadow-sm">
                 <div class="cardTop">
                     <img src="<%= produit.url %>" alt="">
@@ -109,6 +109,7 @@
                     </div>
                 </div>
             </div>
+            <br> <br>
         </div>
         <% }); %>
     </div>
