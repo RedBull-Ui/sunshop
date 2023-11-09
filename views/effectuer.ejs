@@ -76,7 +76,7 @@
             if (key.startsWith("produit_")) {
                 const produitData = JSON.parse(localStorage.getItem(key));
                 // Afficher le nom du produit dans la section des détails de la commande
-                const elementNomProduit = document.createElement('p');
+                const elementNomProduit = document.createElement('h3');
                 elementNomProduit.innerText = produitData.nom;
                 document.querySelector('.order-details').appendChild(elementNomProduit);
             }
