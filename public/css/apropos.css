@@ -202,7 +202,6 @@ body li {
         right: 0;
         position: absolute;
         border-radius: 66% 34% 0% 100% / 24% 0% 100% 76%;
-
         backdrop-filter: blur(10px); /* Ajustez la valeur de flou selon vos préférences */
   background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond floue avec opacité */
   /* Autres styles pour votre élément */
@@ -288,6 +287,8 @@ body li {
 
     .row {
         padding: 25px;
+        width: 100%;
+        margin: 0;
     }
     .row .left img {
         max-width: 100%; /* Ajuster la largeur à 100% pour les mobiles */
