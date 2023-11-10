@@ -338,9 +338,10 @@ body ul {
         color: #0A9EBF;
     }
     .row {
-        padding: 5px;
-
-    }
+      padding: 5px;
+      width: 100%;
+      margin: 0;
+  }
     .row #left{
         margin-top: 110px;
     }
