@@ -339,6 +339,11 @@ body .hastag {
     color: white;
     font-size: 1.5rem; /* Réduire la taille de la police pour les téléphones */
 }
+.row {
+    padding: 25px;
+    width: 100%;
+    margin: 0;
+}
 
 .row .left {
     height: 50vh; /* Ajuster la hauteur pour les téléphones */
