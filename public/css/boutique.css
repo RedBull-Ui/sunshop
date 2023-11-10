@@ -230,6 +230,10 @@ body .row {
   }
   
  /* ici ratio */
+.row{
+  width: 100%;
+  margin: 0;
+}
 .row .card {
     height: auto;
     width: 100%; /* Ajuster la largeur des cartes pour les mobiles */
@@ -518,7 +522,7 @@ nav #nav-links {
   }
   body {
     max-width: 100%;
-    margin: 0 auto; /* Cela centre votre contenu horizontalement */
+    margin: 0; /* Cela centre votre contenu horizontalement */
   }
   body footer {
     padding: 0px;
