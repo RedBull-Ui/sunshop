@@ -516,8 +516,19 @@ nav #nav-links {
     border-radius: 99px;
     transition: 0.25s ease-out;
   }
+  body {
+    max-width: 100%;
+    margin: 0 auto; /* Cela centre votre contenu horizontalement */
+  }
+  body footer {
+    padding: 0px;
+}
   
   @media (max-width: 700px) {
+    body{
+      max-width: 100%;
+    margin: 0 auto; /* Cela centre votre contenu horizontalement */
+    }
    
     .tabs {
       transform: scale(0.6);
