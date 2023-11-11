@@ -433,6 +433,11 @@ nav #sac2{
     margin-bottom: 35px;
     text-align: start;
   }
+  .row {
+    padding: 5px;
+    width: 100%;
+    margin: 0;
+}
 
   .all img {
     width: 60px;
