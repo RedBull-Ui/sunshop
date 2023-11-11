@@ -175,12 +175,13 @@ body .all {
   margin-bottom: 20px; /* Ajuster la marge pour les mobiles */
 }
 
-.all #retour{
+#retour{
   border: 1px solid;
   height: 10px;
   width: 30px;
   background-color: rgb(218, 216, 216);
   border-radius: 11px;
+  text-decoration: none;
 }
 
 .card {
