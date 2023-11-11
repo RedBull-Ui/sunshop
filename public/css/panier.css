@@ -434,9 +434,9 @@ nav #sac2{
     text-align: start;
   }
   .row {
-    padding: 5px;
-    width: 100%;
-    margin: 0;
+    padding: 5px !important;
+    width: 100% !important;
+    margin: 0 !important;
 }
 
   .all img {
