@@ -86,7 +86,7 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
   // Construisez le message à envoyer sur Telegram en utilisant les données reçues
   const message = `🎀 Commande de ${nom} (${numeroTelephone}) :\n\n` +
     produits.map((produit) => {
-      return `${produit.nom} - ${produit.prix} €\nDescription : ${produit.description}\n`;
+      return `${produit.nom} - ${produit.prix} CFA\nDescription : ${produit.description}\n`;
     }).join('\n');
 
   // Remplacez 'YOUR_BOT_TOKEN' et 'CHAT_ID' par les valeurs appropriées
