@@ -175,7 +175,7 @@ body .all {
   margin-bottom: 20px; /* Ajuster la marge pour les mobiles */
 }
 
-body #retour{
+body a{
   border: 1px solid;
   height: 10px;
   width: 30px;
