@@ -1,23 +1,26 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql2');
+// const mysql = require('mysql2');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios'); // Importez Axios
+const admin = require('firebase-admin');
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-// Configuration de la connexion à la base de données en utilisant des variables d'environnement
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  connectionLimit: 10,
+// Configuration de la connexion à la base de données 
+
+const serviceAccount = require('./sunshop.json'); // Remplacez par le chemin vers votre fichier de configuration Firebase
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
 });
+
+const db = admin.firestore();
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -28,41 +31,47 @@ app.get('/', function (req, res) {
   res.render('index.ejs');
 });
 
-app.get('/boutique', (req, res) => {
-  const sql = 'SELECT * FROM produits';
-
-  pool.query(sql, (err, rows) => {
-    if (err) {
-      console.error('Erreur lors de la récupération des données :', err);
-      res.status(500).json({ error: 'Erreur de base de données' });
-    } else {
-      res.render('boutique.ejs', { produits: rows });
-    }
-  });
+app.get('/boutique', async (req, res) => {
+  try {
+    const snapshot = await db.collection('produits').get();
+    const produits = snapshot.docs.map(doc => doc.data());
+    res.render('boutique.ejs', { produits });
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
 });
+
 
 // Nous allons créer un tableau pour stocker les produits ajoutés côté client
 const produitsDansLePanier = [];
 
-// Lorsqu'un produit est ajouté côté client, nous l'ajoutons au tableau
-app.post('/ajouter-au-panier', (req, res) => {
+app.post('/ajouter-au-panier', async (req, res) => {
   const produitId = req.body.produitId;
-  // Vous pouvez ajouter d'autres informations sur le produit ici, si nécessaire
 
-  // Recherchez le produit par son ID (vous devez implémenter cette recherche)
-  const produit = /* Recherchez le produit par son ID dans la base de données */
+  try {
+    const produitRef = db.collection('produits').doc(produitId);
+    const produitDoc = await produitRef.get();
+    const produit = produitDoc.data();
 
-  // Ajoutez le produit au tableau des produits dans le panier
-  produitsDansLePanier.push(produit);
+    // Ajoutez le produit au tableau des produits dans le panier
+    produitsDansLePanier.push(produit);
 
-  // Envoyez une réponse pour indiquer le succès de l'ajout
-  res.json({ success: true });
+    // Envoyez une réponse pour indiquer le succès de l'ajout
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Erreur lors de l\'ajout au panier :', error);
+    res.status(500).json({ error: 'Erreur lors de l\'ajout au panier' });
+  }
 });
 
+
+// Exemple de récupération des données du panier depuis Firestore
 app.get('/panier', (req, res) => {
-  // Affichez les produits ajoutés côté client dans la vue panier.ejs
+  // Vous devez adapter cette partie en fonction de la structure réelle de votre base de données Firestore
   res.render('panier.ejs', { produitsDansLePanier });
 });
+
 
 app.get('/contact', function (req, res) {
   res.render('contact.ejs');
