@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios'); // Importez Axios
 const admin = require('firebase-admin');
+const { v4: uuidv4 } = require('uuid'); // Importe uuid
 
 
 app.set('view engine', 'ejs');
@@ -34,42 +35,18 @@ app.get('/', function (req, res) {
 app.get('/boutique', async (req, res) => {
   try {
     const snapshot = await db.collection('produits').get();
-    const produits = snapshot.docs.map(doc => doc.data());
+    const produits = snapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: uuidv4(), // Ajoute un nouvel ID unique à chaque produit
+      };
+    });
     res.render('boutique.ejs', { produits });
   } catch (error) {
     console.error('Erreur lors de la récupération des données :', error);
     res.status(500).json({ error: 'Erreur de base de données' });
   }
-});
-
-
-// Nous allons créer un tableau pour stocker les produits ajoutés côté client
-const produitsDansLePanier = [];
-
-app.post('/ajouter-au-panier', async (req, res) => {
-  const produitId = req.body.produitId;
-
-  try {
-    const produitRef = db.collection('produits').doc(produitId);
-    const produitDoc = await produitRef.get();
-    const produit = produitDoc.data();
-
-    // Ajoutez le produit au tableau des produits dans le panier
-    produitsDansLePanier.push(produit);
-
-    // Envoyez une réponse pour indiquer le succès de l'ajout
-    res.json({ success: true });
-  } catch (error) {
-    console.error('Erreur lors de l\'ajout au panier :', error);
-    res.status(500).json({ error: 'Erreur lors de l\'ajout au panier' });
-  }
-});
-
-
-// Exemple de récupération des données du panier depuis Firestore
-app.get('/panier', (req, res) => {
-  // Vous devez adapter cette partie en fonction de la structure réelle de votre base de données Firestore
-  res.render('panier.ejs', { produitsDansLePanier });
 });
 
 
@@ -124,6 +101,25 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
 
 
 // ... D'autres configurations et routes ...
+
+const panier = [];
+
+app.post('/ajouter-au-panier', (req, res) => {
+  const { id, nom, prix, desc, url } = req.body;
+
+  // Vérifie si id est une chaîne non vide
+  if (!id || typeof id !== 'string') {
+    console.error('ID invalide');
+    return res.status(400).json({ error: 'ID invalide' });
+  }
+
+  // Ajouter le produit au panier
+  panier.push({ id, nom, prix, desc, url });
+
+  res.json({ success: true, panier });
+});
+
+
 
 
 app.use((err, req, res, next) => {

@@ -83,7 +83,7 @@
                     <div class="collapse" id="collapseExample_<%= produit.id %>">
                         <div class="">
                             <!-- Contenu du "voir plus" -->
-                            <%= produit.description %>
+                            <%= produit.desc %>
                         </div>
                     </div>
 
@@ -98,13 +98,15 @@
                         <div style="display: flex; justify-content: space-between;">
                             <!-- Affichage du prix -->
                             <p style="color: rgb(44, 190, 44);"><%= produit.prix %> CFA</p>
-                            <div class="panierTonne ajouter-au-panier" data-id="<%= produit.id %>"
-                                data-prix="<%= produit.prix %>"
-                                data-nom="<%= produit.nom %>"
-                                data-description="<%= produit.description %>"
-                                data-url="<%= produit.url %>">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </div>
+                            <div class="panierTonne ajouter-au-panier"
+                            data-id="<%= produit.id %>"
+                            data-prix="<%= produit.prix %>"
+                            data-nom="<%= produit.nom %>"
+                            data-description="<%= produit.desc %>"
+                            data-url="<%= produit.url %>">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </div>
+                        
                         </div>
                     </div>
                 </div>
