@@ -50,6 +50,9 @@ app.get('/boutique', async (req, res) => {
 });
 
 
+app.get('/panier', function (req, res) {
+  res.render('panier.ejs');
+});
 app.get('/contact', function (req, res) {
   res.render('contact.ejs');
 });
@@ -71,7 +74,7 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
 
   // Construisez le message à envoyer sur Telegram en utilisant les données reçues
   const message = `🎀 Commande de ${nom} (${numeroTelephone}) :\n\n` +
-    produits.map((produit) => {
+    produits.map((produit) => {  
       return `${produit.nom} - ${produit.prix} CFA\nDescription : ${produit.description}\n`;
     }).join('\n');
 
