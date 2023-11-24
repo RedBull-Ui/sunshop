@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
   const container = document.querySelector('.row');
 
-  // Vérifiez si localStorage est disponible
-  if (typeof localStorage !== 'undefined') {
+  var pointRouge = document.getElementById('point-rouge');
+
+   // Vérifiez si localStorage est disponible
+   if (typeof localStorage !== 'undefined') {
     // Parcourez les clés du localStorage et affichez les produits
+    let produitFound = false;
+
     Object.keys(localStorage).forEach((key) => {
       if (key.startsWith('produit_')) {
+        produitFound = true;
+
         const produit = JSON.parse(localStorage.getItem(key));
         const card = document.createElement('div');
         card.className = 'col-md-4';
@@ -40,62 +46,110 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         </div>
     </div>
-    
         `;
         container.appendChild(card);
       }
     });
+
+    // Si un produit a été trouvé, mettez 'pointRouge' sur 'on' et affichez l'élément
+    if (produitFound) {
+      localStorage.setItem('pointRouge', 'on');
+      pointRouge.style.display = 'block';
+      mettreAJourPointRouge()
+    } else {
+      // Aucun produit trouvé, mettez 'pointRouge' sur 'off' et masquez l'élément
+      localStorage.setItem('pointRouge', 'off');
+      pointRouge.style.display = 'none';
+      mettreAJourPointRouge()
+    }
   } else {
     // Gérez le cas où localStorage n'est pas disponible
+    localStorage.setItem('pointRouge', 'off');
+    pointRouge.style.display = 'none';
     console.error('localStorage is not available.');
   }
 });
 
-function effacer(){
-  // Sélectionnez tous les éléments ayant la classe "fa-trash-alt"
-const trashIcons = document.querySelectorAll('.fa-trash-alt');
+function mettreAJourPointRouge() {
+  const pointRouge = document.getElementById('point-rouge');
 
-// Ajoutez un gestionnaire d'événements de clic à chaque icône de corbeille
-trashIcons.forEach((icon) => {
-  icon.addEventListener('click', (event) => {
-    // Récupérez l'ID du produit associé à l'icône
-    const productId = event.target.getAttribute('data-product-id');
+  // Vérifiez si localStorage est disponible
+  if (typeof localStorage !== 'undefined') {
+    // Parcourez les clés du localStorage pour vérifier s'il y a des produits
+    let produitFound = false;
 
-    // Supprimez l'élément du Local Storage en utilisant l'ID du produit
-    localStorage.removeItem(`produit_${productId}`);
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith('produit_')) {
+        produitFound = true;
+        return; // Sortez de la boucle dès qu'un produit est trouvé
+      }
+    });
 
-    // Cachez l'élément parent (la carte de produit) en utilisant display: none
-    const productCard = event.target.closest('.card');
-    if (productCard) {
-      productCard.style.display = 'none';
+    // Si un produit a été trouvé, mettez 'pointRouge' sur 'on' et affichez l'élément
+    if (produitFound) {
+      localStorage.setItem('pointRouge', 'on');
+      pointRouge.style.display = 'block';
+    } else {
+      // Aucun produit trouvé, mettez 'pointRouge' sur 'off' et masquez l'élément
+      localStorage.setItem('pointRouge', 'off');
+      pointRouge.style.display = 'none';
     }
-  });
-});
-
-}
-
-function swipe(){
-  // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
-function localStorageNeContientPasProduits() {
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key.startsWith("produit_")) {
-      return false; // Le localStorage contient au moins une clé commençant par "produit_"
-    }
+  } else {
+    // Gérez le cas où localStorage n'est pas disponible
+    localStorage.setItem('pointRouge', 'off');
+    pointRouge.style.display = 'none';
+    console.error('localStorage is not available.');
   }
-  return true; // Aucune clé commençant par "produit_" trouvée
 }
 
-// Exemple d'utilisation
-var notif = document.getElementById('notif');
-if (localStorageNeContientPasProduits()) {
-  // Effectuez une action si le localStorage ne contient pas de clés "produit_"
-  notif.innerText = '🌹 Panier vide !';
-  console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
-} else {
-  notif.innerText = '';
-  window.location.href= '/regler';
-  console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
+function effacer() {
+  // Sélectionnez tous les éléments ayant la classe "fa-trash-alt"
+  const trashIcons = document.querySelectorAll('.fa-trash-alt');
+
+  // Ajoutez un gestionnaire d'événements de clic à chaque icône de corbeille
+  trashIcons.forEach((icon) => {
+    icon.addEventListener('click', (event) => {
+      // Récupérez l'ID du produit associé à l'icône
+      const productId = event.target.getAttribute('data-product-id');
+
+      // Supprimez l'élément du Local Storage en utilisant l'ID du produit
+      localStorage.removeItem(`produit_${productId}`);
+
+      // Cachez l'élément parent (la carte de produit) en utilisant display: none
+      const productCard = event.target.closest('.card');
+      if (productCard) {
+        productCard.style.display = 'none';
+
+        // Mettez à jour le point rouge après la suppression du produit
+        mettreAJourPointRouge();
+      }
+    });
+  });
+
 }
+
+function swipe() {
+  // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
+  function localStorageNeContientPasProduits() {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("produit_")) {
+        return false; // Le localStorage contient au moins une clé commençant par "produit_"
+      }
+    }
+    return true; // Aucune clé commençant par "produit_" trouvée
+  }
+
+  // Exemple d'utilisation
+  var notif = document.getElementById('notif');
+  if (localStorageNeContientPasProduits()) {
+    // Effectuez une action si le localStorage ne contient pas de clés "produit_"
+    notif.innerText = '🌹 Panier vide !';
+    console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
+  } else {
+    notif.innerText = '';
+    window.location.href = '/regler';
+    console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
+  }
 
 }

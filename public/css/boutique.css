@@ -138,7 +138,7 @@ nav .sac{
 nav #sac:hover {
     color: #0A9EBF;
 }
-.point-rouge {
+/* .point-rouge {
     position: relative;
   }
   
@@ -151,7 +151,7 @@ nav #sac:hover {
     border-radius: 50%;
     top: -5px;
     right: -5px;
-  }
+  } */
 
 .focus a {
     color: #0A9EBF;
@@ -569,7 +569,7 @@ nav #nav-links {
         padding: 0px;
     }
 
-    .point-rouge {
+    /* .point-rouge {
         position: relative;
       }
       
@@ -582,6 +582,6 @@ nav #nav-links {
         border-radius: 50%;
         top: -5px;
         right: -5px;
-      }
+      } */
       
 }

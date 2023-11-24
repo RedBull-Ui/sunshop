@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Vérifiez d'abord si le produit existe déjà dans le localStorage
       const produitExistant = localStorage.getItem(cleProduit);
+
+      // point rouge
+
+      var pointRouge = document.getElementById('point-rouge') ;
+
   
       if (produitExistant) {
         // Si le produit existe déjà, mettez à jour la quantité
@@ -19,10 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Si le produit n'existe pas, ajoutez-le avec une quantité de 1
         produit.quantite = 1;
         localStorage.setItem(cleProduit, JSON.stringify(produit));
+
+        localStorage.setItem('pointRouge', 'on')
+        pointRouge.style.display= "block"
+
       }
   
       alert('Produit ajouté au panier !'); // Affichez un message de confirmation
-      location.reload();
+      // location.reload();
     }
   
     // Gestion des clics sur les boutons "Ajouter au panier"

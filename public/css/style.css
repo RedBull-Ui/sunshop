@@ -333,7 +333,18 @@ body ul {
         font-size: 25px;
         transition: 0.3s;
         cursor: pointer;
+        position: relative;
     }
+    /* nav #sac::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      top: -5px;
+      right: -5px;
+    } */
     nav #sac:hover{
         color: #0A9EBF;
     }
@@ -351,20 +362,8 @@ body ul {
     body footer {
         padding: 20px; /* Further reduce footer padding for smaller screens */
     }
-    .point-rouge {
-        position: relative;
-      }
       
-      .point-rouge::after {
-        content: '';
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: red;
-        border-radius: 50%;
-        top: -5px;
-        right: -5px;
-      }
+      
 }
 
 /* Media Query for Tablets */

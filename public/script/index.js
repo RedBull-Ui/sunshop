@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    var pointRougeState = localStorage.getItem('pointRouge');
+    var pointRouge = document.getElementById('point-rouge') ;
+
+
+    if(pointRougeState ==='on'){
+        pointRouge.style.display= "block"
+    }else{
+        pointRouge.style.display= 'none';
+    }
+
+
     ////////// la recherche ici ../////////
 
 
