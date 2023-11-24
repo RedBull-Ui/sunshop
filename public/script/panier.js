@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var pointRouge = document.getElementById('point-rouge');
 
-   // Vérifiez si localStorage est disponible
   // Vérifie si localStorage est disponible
 if (typeof localStorage !== 'undefined') {
   // Obtenez le tableau panier depuis le localStorage
@@ -104,27 +103,48 @@ function effacer() {
   // Sélectionnez tous les éléments ayant la classe "fa-trash-alt"
   const trashIcons = document.querySelectorAll('.fa-trash-alt');
 
-  // Ajoutez un gestionnaire d'événements de clic à chaque icône de corbeille
+  // Retirez d'abord tous les gestionnaires d'événements existants pour éviter les doublons
   trashIcons.forEach((icon) => {
-    icon.addEventListener('click', (event) => {
-      // Récupérez l'ID du produit associé à l'icône
-      const productId = event.target.getAttribute('data-product-id');
-
-      // Supprimez l'élément du Local Storage en utilisant l'ID du produit
-      localStorage.removeItem(`produit_${productId}`);
-
-      // Cachez l'élément parent (la carte de produit) en utilisant display: none
-      const productCard = event.target.closest('.card');
-      if (productCard) {
-        productCard.style.display = 'none';
-
-        // Mettez à jour le point rouge après la suppression du produit
-        mettreAJourPointRouge();
-      }
-    });
+    icon.removeEventListener('click', handleClick);
   });
 
+  // Ajoutez un gestionnaire d'événements de clic à chaque icône de corbeille
+  trashIcons.forEach((icon) => {
+    icon.addEventListener('click', handleClick);
+  });
+
+  // Définition du gestionnaire d'événements de clic
+  function handleClick(event) {
+    // Récupérez l'ID du produit associé à l'icône
+    const productId = event.target.getAttribute('data-product-id');
+  
+    // Obtenez le tableau panier depuis le localStorage
+    const panier = JSON.parse(localStorage.getItem('panier')) || [];
+  
+    // Recherchez l'index du produit dans le panier en utilisant son ID
+    const productIndex = panier.findIndex((produit) => produit.id === productId);
+  
+    // Vérifiez si le produit a été trouvé dans le panier
+    if (productIndex !== -1) {
+      // Supprimez le produit du panier
+      panier.splice(productIndex, 1);
+  
+      // Mettez à jour le localStorage avec le nouveau panier
+      localStorage.setItem('panier', JSON.stringify(panier));
+    }
+  
+    // Cachez l'élément parent (la carte de produit) en utilisant display: none
+    const productCard = event.target.closest('.card');
+    if (productCard) {
+      productCard.style.display = 'none';
+  
+      // Mettez à jour le point rouge après la suppression du produit
+      mettreAJourPointRouge();
+    }
+  }
+  
 }
+
 
 function swipe() {
   // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
