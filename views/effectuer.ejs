@@ -50,11 +50,38 @@
   </footer>
 </body>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
- 
-
-  });
+    document.addEventListener("DOMContentLoaded", function() {
+      // Récupérer le panier depuis le localStorage
+      const panier = JSON.parse(localStorage.getItem('panier')) || [];
   
-</script>
+      // Sélectionner l'élément HTML où vous voulez afficher les détails de la commande
+      const detailsCommandeSection = document.querySelector('.order-details');
+  
+      // Vérifier si le panier est vide
+      if (panier.length === 0) {
+        detailsCommandeSection.innerHTML = '<p>Le panier est vide.</p>';
+      } else {
+        // Construire le contenu HTML pour les détails de la commande
+        const contenuHTML = panier.map(item => `<p>${item.nom} - Prix: ${item.prix} CFA</p>`).join('');
+  
+        // Injecter le contenu dans la section des détails de la commande
+        detailsCommandeSection.innerHTML = `
+          <h2>Détails de la commande</h2>
+          ${contenuHTML}
+        `;
+      }
+    });
+  
+    function viderPanier() {
+      // Vider le panier dans le localStorage
+      localStorage.removeItem('panier');
+    }
+    function retour() {
+
+        viderPanier();
+      window.location.href = '/boutique'; // Modifier le chemin selon votre besoin
+    }
+  </script>
+  
 
 </html>
