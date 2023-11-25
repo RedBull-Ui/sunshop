@@ -69,27 +69,38 @@ app.get('/effectuer', function (req, res) {
 // ... Autres configurations et routes ...
 
 app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
+  const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
+  const chatId = '1016981131';
 
- const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
- const chatId = '1016981131';
-
-  // Assurez-vous que le corps de la requête contient un champ "message"
-  const panier = req.body.panier;
+  // Assurez-vous que le corps de la requête contient les champs "panier", "nomPrenom" et "numeroTelephone"
+  const { panier, nomPrenom, numeroTelephone } = req.body;
 
   try {
-    const response = await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
-    
-    if (response.status === 200) {
-      res.json({ success: true });
+    if (nomPrenom && numeroTelephone) {
+      // Formatez les éléments du panier dans un message lisible
+      const panierMessage = panier.map(item => `Produit: ${item.nom}, Prix: ${item.prix} CFA`).join('\n');
+
+      const message = `✅ Nouvelle commande de : \n${nomPrenom} (${numeroTelephone}).\n\n📝 Détails de la commande:\n${panierMessage}`;
+      
+      const response = await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
+      
+      if (response.status === 200) {
+        res.json({ success: true });
+      } else {
+        console.error('Erreur lors de l\'envoi de la commande sur Telegram.');
+        res.status(500).json({ error: 'Erreur lors de l\'envoi de la commande sur Telegram' });
+      }
     } else {
-      console.error('Erreur lors de l\'envoi de la commande sur Telegram.');
-      res.status(500).json({ error: 'Erreur lors de l\'envoi de la commande sur Telegram' });
+      console.error('Erreur: champs manquants.');
+      res.status(400).json({ error: 'Champs manquants' });
     }
   } catch (error) {
     console.error('Erreur lors de l\'envoi de la commande sur Telegram :', error);
     res.status(500).json({ error: 'Erreur lors de l\'envoi de la commande sur Telegram' });
   }
 });
+
+
 
 // ... D'autres configurations et routes ...
 
