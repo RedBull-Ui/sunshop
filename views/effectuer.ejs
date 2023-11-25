@@ -1,116 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/effectuer.css">
-    <title>Commande Effectuée</title>
-    <script>
-        // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
-        function localStorageNeContientPasProduits() {
-                    for (let i = 0; i < localStorage.length; i++) {
-                        const key = localStorage.key(i);
-                        if (key.startsWith("produit_")) {
-                            return false; // Le localStorage contient au moins une clé commençant par "produit_"
-                        }
-                    }
-                    return true; // Aucune clé commençant par "produit_" trouvée
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/effectuer.css">
+  <title>Commande Effectuée</title>
+  <script>
+    function redirigerVersPagePanier() {
+      // Récupérez le tableau panier depuis le localStorage
+      const panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-                // Exemple d'utilisation
-                if (localStorageNeContientPasProduits()) {
-                    // Effectuez une action si le localStorage ne contient pas de clés "produit_"
-                    window.location.href = "/panier";
+      // Vérifie si le panier est vide
+      if (panier.length === 0) {
+        // Effectuez une action si le panier est vide (par exemple, redirigez vers la page du panier)
+        window.location.href = '/panier';
+        console.log("Le panier est vide. Redirection vers la page du panier.");
+      } else {
+        // Effectuez une action si le panier n'est pas vide (par exemple, affichez un message dans la console)
+        console.log("Le panier n'est pas vide.");
+      }
+    }
 
-                    console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
-                } else {
-                    console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
-                }
-
-
-    </script>
-    
+    // Exemple d'utilisation
+    redirigerVersPagePanier();
+  </script>
 
 </head>
+
 <body>
-    <header>
-        <h1>Commande Effectuée avec Succès</h1>
-    </header>
-    <main>
-        <section class="order-details">
-            <h2>Détails de la commande</h2>
-            <p>Merci pour votre commande ! Voici les détails de votre achat :</p> <br> 
-            
-               
-            
-             
-        </section>
-        <section class="confirmation-message">
-            <p>Votre commande a été passée avec succès. Elle sera traitée dans les plus brefs délais.</p>
-            <p>Un assistant vous contactera pour vous faire livrer</p>
-            <p>Merci de faire confiance à SunShop !</p>
-            <a onclick="retour()" class="btn-return">Retour à la Boutique</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 SunShop <strong>by Privat's labs</strong> </p>
-    </footer>
+  <header>
+    <h1>Commande Effectuée avec Succès</h1>
+  </header>
+  <main>
+    <section class="order-details">
+      <h2>Détails de la commande</h2>
+      <p>Merci pour votre commande ! Voici les détails de votre achat :</p> <br>
+
+    </section>
+    <section class="confirmation-message">
+      <p>Votre commande a été passée avec succès. Elle sera traitée dans les plus brefs délais.</p>
+      <p>Un assistant vous contactera pour vous faire livrer</p>
+      <p>Merci de faire confiance à SunShop !</p>
+      <a onclick="retour()" class="btn-return">Retour à la Boutique</a>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 SunShop <strong>by Privat's labs</strong> </p>
+  </footer>
 </body>
 <script>
- document.addEventListener("DOMContentLoaded", function() {
-    // Fonction pour vérifier si le localStorage contient des clés commençant par "produit_"
-    function localStorageNeContientPasProduits() {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key.startsWith("produit_")) {
-                return false;
-            }
-        }
-        return true;
-    }
+  document.addEventListener("DOMContentLoaded", function() {
+ 
 
-    // Fonction pour afficher les noms des produits depuis le localStorage
-    function afficherNomsProduits() {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key.startsWith("produit_")) {
-                const produitData = JSON.parse(localStorage.getItem(key));
-                // Afficher le nom du produit dans la section des détails de la commande
-                const elementNomProduit = document.createElement('h3');
-                elementNomProduit.innerText = produitData.nom;
-                document.querySelector('.order-details').appendChild(elementNomProduit);
-            }
-        }
-    }
-
-    // Vérifier si le localStorage contient des clés commençant par "produit_"
-    if (localStorageNeContientPasProduits()) {
-        window.location.href = "/panier";
-        console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
-    } else {
-        console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
-        // Appeler la fonction pour afficher les noms des produits
-        afficherNomsProduits();
-    }
-
-    // Autres fonctions et code...
-
-});
-
-   function retour(){
-   // Parcourez les clés du Local Storage
-for (let key in localStorage) {
-  // Vérifiez si la clé commence par "produit_"
-  if (key.startsWith("produit_")) {
-    // Si c'est le cas, supprimez cette clé
-    localStorage.removeItem(key);
-  }
-}
-
-
-    window.location.href = '/boutique';
-   }
-           
-       </script>
+  });
+  
+</script>
 
 </html>

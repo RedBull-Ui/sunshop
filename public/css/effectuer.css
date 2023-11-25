@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #0ebf55;
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -29,6 +29,9 @@ main {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 50vh;
+    height: auto;
+    border: 1px dashed rgb(169, 164, 164);
 }
 
 .order-details {
@@ -76,11 +79,15 @@ main {
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     text-align: center;
     margin-top: 20px;
     padding: 10px 0;
     background-color: #333;
     color: #fff;
+    width: 100%;
 }
 
 /* Styles supplémentaires selon vos besoins */
