@@ -2,171 +2,107 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awesome here  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome here  -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- boostrap here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- style here  -->
-    <link rel="stylesheet" href="css/regler.css">
-    <title>Régler vos achats plus rapidement.</title>
+  <!-- boostrap here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- style here  -->
+  <link rel="stylesheet" href="css/regler.css">
+  <title>Régler vos achats plus rapidement.</title>
+
+  <script>
+    function redirigerVersPagePanier() {
+      // Récupérez le tableau panier depuis le localStorage
+      const panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+      // Vérifie si le panier est vide
+      if (panier.length === 0) {
+        // Effectuez une action si le panier est vide (par exemple, redirigez vers la page du panier)
+        window.location.href = '/panier';
+        console.log("Le panier est vide. Redirection vers la page du panier.");
+      } else {
+        // Effectuez une action si le panier n'est pas vide (par exemple, affichez un message dans la console)
+        console.log("Le panier n'est pas vide.");
+      }
+    }
+
+    // Exemple d'utilisation
+    redirigerVersPagePanier();
+  </script>
 </head>
 
 <body>
-    <!-- Inclure votre en-tête, votre navigation, ou d'autres éléments communs ici -->
-    <%- include('composants/nav.ejs') %>
+  <!-- Inclure votre en-tête, votre navigation, ou d'autres éléments communs ici -->
+  <%- include('composants/nav.ejs') %>
 
-        <h4>Entrez vos informations pour régler vos achats plus rapidement.</h4>
+  <h4>Entrez vos informations pour régler vos achats plus rapidement.</h4>
 
-        <form class="row">
-            <p style="text-align: center;">Passer votre commande</p>
-            <div class="col-md-6">
-                <input type="text" id="nomPrenom" placeholder="Votre nom et prénom" required>
-            </div>
-            <div class="col-md-4">
-                <input type="number" id="numeroTelephone" placeholder="Numéro de téléphone" required>
-                <p style="color: goldenrod;" id="noti"></p>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="shadow-sm" id="envoyerTelegram">➤</button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="shadow-sm" id="envoyerTelegram2">Terminer</button>
-            </div>
-        </form>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-
-                // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
-                function localStorageNeContientPasProduits() {
-                    for (let i = 0; i < localStorage.length; i++) {
-                        const key = localStorage.key(i);
-                        if (key.startsWith("produit_")) {
-                            return false; // Le localStorage contient au moins une clé commençant par "produit_"
-                        }
-                    }
-                    return true; // Aucune clé commençant par "produit_" trouvée
-                }
-
-                // Exemple d'utilisation
-                if (localStorageNeContientPasProduits()) {
-                    // Effectuez une action si le localStorage ne contient pas de clés "produit_"
-                    window.location.href = "/panier";
-
-                    console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
-                } else {
-                    console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
-                }
-
-
-
-                // Gérer le clic sur le bouton "envoyerTelegram"
-                document.getElementById("envoyerTelegram").addEventListener("click", function () {
-                    const nomPrenom = document.getElementById("nomPrenom").value;
-                    const numeroTelephone = document.getElementById("numeroTelephone").value;
-                    var noti = document.getElementById('noti');
-
-                    // Récupérer les clés du localStorage qui commencent par "produit_"
-                    const clesDesProduits = Object.keys(localStorage).filter((cle) => cle.startsWith("produit_"));
-
-                    // Préparez les données à envoyer au serveur
-                    const data = {
-                        nom: nomPrenom,
-                        numeroTelephone: numeroTelephone,
-                        produits: clesDesProduits.map((cle) => JSON.parse(localStorage.getItem(cle)))
-                    };
-
-                    // Effectuez une requête HTTP POST vers le serveur
-                    if(nomPrenom && numeroTelephone !== ""){
-                        fetch('/envoyer-sur-telegram', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        })
-                            .then((response) => {
-                                if (response.ok) {
-                                    window.location.href = '/effectuer'
-                                } else {
-                                    alert("Erreur lors de l'envoi de la commande sur Telegram.");
-                                }
-                            })
-                            .catch((error) => {
-                                console.error("Erreur lors de l'envoi de la commande au serveur :", error);
-                                alert("Erreur lors de l'envoi de la commande sur Telegram.");
-                            });
-                    }else{
-                       return noti.innerText = 'merci de bien remplir les champs. !'
-                        
-                    }
-                });
-            });
-
-            // Gérer le clic sur le bouton "envoyerTelegram2"
-                document.getElementById("envoyerTelegram2").addEventListener("click", function () {
-                    const nomPrenom = document.getElementById("nomPrenom").value;
-                    const numeroTelephone = document.getElementById("numeroTelephone").value;
-                    var noti = document.getElementById('noti');
-
-                    // Récupérer les clés du localStorage qui commencent par "produit_"
-                    const clesDesProduits = Object.keys(localStorage).filter((cle) => cle.startsWith("produit_"));
-
-                    // Préparez les données à envoyer au serveur
-                    const data = {
-                        nom: nomPrenom,
-                        numeroTelephone: numeroTelephone,
-                        produits: clesDesProduits.map((cle) => JSON.parse(localStorage.getItem(cle)))
-                    };
-
-                    // Effectuez une requête HTTP POST vers le serveur
-                    if(nomPrenom && numeroTelephone !== ""){
-                        fetch('/envoyer-sur-telegram', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        })
-                            .then((response) => {
-                                if (response.ok) {
-                                    window.location.href = '/effectuer'
-                                } else {
-                                    alert("Erreur lors de l'envoi de la commande sur Telegram.");
-                                }
-                            })
-                            .catch((error) => {
-                                console.error("Erreur lors de l'envoi de la commande au serveur :", error);
-                                alert("Erreur lors de l'envoi de la commande sur Telegram.");
-                            });
-                    }else{
-                       return noti.innerText = 'merci de bien remplir les champs. !'
-                        
-                    }
-                });
-            
-        </script>
+  <form class="row">
+    <p style="text-align: center;">Passer votre commande</p>
+    <div class="col-md-6">
+      <input type="text" id="nomPrenom" placeholder="Votre nom et prénom" required>
+    </div>
+    <div class="col-md-4">
+      <input type="number" id="numeroTelephone" placeholder="Numéro de téléphone" required>
+      <p style="color: goldenrod;" id="noti"></p>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="shadow-sm" id="envoyerTelegram">➤</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="shadow-sm" id="envoyerTelegram2"  onclick="envoyerTelegram()">Terminer</button>
+    </div>
+  </form>
 </body>
+
+<!-- ... Votre code HTML ... -->
+
+<script>
+    function envoyerTelegram() {
+      // Récupérer les données depuis le localStorage
+      const monPanier = localStorage.getItem('panier');
+  
+      // Envoyer les données au serveur
+      fetch('/envoyer-sur-telegram', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            panier: monPanier
+          }),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Erreur lors de l\'envoi des données au serveur :', error));
+    }
+  
+    document.addEventListener('DOMContentLoaded', function () {
+      // Autres opérations liées à la page DOM lorsqu'elle est chargée
+    });
+  </script>
+  
+  <!-- ... Votre code HTML ... -->
+  
 <script src="/script/index.js"></script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/64ac812894cf5d49dc62c113/1h50th2c3';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+  var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"),
+      s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/64ac812894cf5d49dc62c113/1h50th2c3';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
 
 </html>

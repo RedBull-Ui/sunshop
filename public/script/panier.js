@@ -147,27 +147,21 @@ function effacer() {
 
 
 function swipe() {
-  // Vérifie si le localStorage ne contient pas de clés commençant par "produit_"
-  function localStorageNeContientPasProduits() {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key.startsWith("produit_")) {
-        return false; // Le localStorage contient au moins une clé commençant par "produit_"
-      }
-    }
-    return true; // Aucune clé commençant par "produit_" trouvée
-  }
+  // Récupérez le tableau panier depuis le localStorage
+  const panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-  // Exemple d'utilisation
-  var notif = document.getElementById('notif');
-  if (localStorageNeContientPasProduits()) {
-    // Effectuez une action si le localStorage ne contient pas de clés "produit_"
+  // Vérifie si le panier est vide
+  if (panier.length === 0) {
+    // Effectuez une action si le panier est vide
+    var notif = document.getElementById('notif');
     notif.innerText = '🌹 Panier vide !';
-    console.log("Le localStorage ne contient pas de clés commençant par 'produit_'.");
+    console.log('Le panier est vide.');
   } else {
+    // Effectuez une action si le panier n'est pas vide
+    var notif = document.getElementById('notif');
     notif.innerText = '';
     window.location.href = '/regler';
-    console.log("Le localStorage contient au moins une clé commençant par 'produit_'.");
+    console.log('Le panier n\'est pas vide.');
   }
-
 }
+

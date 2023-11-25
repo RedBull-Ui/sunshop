@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (produitExiste) {
         alert('Déjà ajouté au panier.');
         return;
-      }
-
-      // Ajoute le produit au panier
+      }else{
+        // Ajoute le produit au panier
       panier.push({ id, nom, prix, description, url });
 
       // Enregistre le panier mis à jour dans le localStorage
@@ -29,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('pointRouge','on')
       alert('Produit ajouté au panier !');
       mettreAJourPointRouge();
+      }
+
+      
     });
   });
 

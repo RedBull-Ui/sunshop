@@ -68,24 +68,13 @@ app.get('/effectuer', function (req, res) {
 
 // ... Autres configurations et routes ...
 
-// Ajoutez une route pour recevoir les données du client
 app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
-  const { nom, numeroTelephone, produits } = req.body;
 
-  // Construisez le message à envoyer sur Telegram en utilisant les données reçues
-  const message = `🎀 Commande de ${nom} (${numeroTelephone}) :\n\n` +
-    produits.map((produit) => {  
-      return `${produit.nom} - ${produit.prix} CFA\nDescription : ${produit.description}\n`;
-    }).join('\n');
+ const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
+ const chatId = '1016981131';
 
-  // Remplacez 'YOUR_BOT_TOKEN' et 'CHAT_ID' par les valeurs appropriées
-  // const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
-  // const chatId = '1016981131';
-  const botToken = process.env.BOT_TOKEN;
-  const chatId = process.env.CHAT_ID;
-
-// Utilisez botToken et chatId dans votre code
-
+  // Assurez-vous que le corps de la requête contient un champ "message"
+  const panier = req.body.panier;
 
   try {
     const response = await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
@@ -101,7 +90,6 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
     res.status(500).json({ error: 'Erreur lors de l\'envoi de la commande sur Telegram' });
   }
 });
-
 
 // ... D'autres configurations et routes ...
 
