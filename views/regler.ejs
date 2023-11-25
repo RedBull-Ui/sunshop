@@ -64,8 +64,42 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var envoyerTelegramButton = document.getElementById('envoyerTelegram2');
+    var envoyerTelegramButton2 = document.getElementById('envoyerTelegram');
 
     envoyerTelegramButton.addEventListener('click', function () {
+      // Récupérer les valeurs des champs
+      var nomPrenomValue = document.getElementById('nomPrenom').value;
+      var numeroTelephoneValue = document.getElementById('numeroTelephone').value;
+      var notif = document.getElementById('noti');
+      // Récupérer le panier depuis le localStorage
+      // var monPanier = localStorage.getItem('panier');
+      const monPanier = JSON.parse(localStorage.getItem('panier')) || [];
+
+      if(numeroTelephoneValue !== '' && numeroTelephoneValue !==''){
+        notif.innerText = '';
+        // Envoyer les données au serveur
+        fetch('/envoyer-sur-telegram', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            panier: monPanier,
+            nomPrenom: nomPrenomValue,
+            numeroTelephone: numeroTelephoneValue
+          }),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Erreur lors de l\'envoi des données au serveur :', error));
+        
+        window.location.href ='/effectuer'
+      }else{
+       return notif.innerText = 'Merci de bien remplir les champs !';
+      }
+    });
+
+    envoyerTelegramButton2.addEventListener('click', function () {
       // Récupérer les valeurs des champs
       var nomPrenomValue = document.getElementById('nomPrenom').value;
       var numeroTelephoneValue = document.getElementById('numeroTelephone').value;
