@@ -9,45 +9,50 @@
     font-style: italic;
     font-family: 'Mansalva', cursive;
     ">
-        <span onclick="home()" class="sun" style="color: #0A9EBF">Sun</span>
-        <span onclick="home()" class="shop" style="color: #F2B707;text-decoration:underline;
+      <span onclick="homeF()" class="sun" style="color: #0A9EBF">Sun</span>
+      <span onclick="homeF()" class="shop" style="color: #F2B707;text-decoration:underline;
         ">Shop</span>
     </div>
-     
-       <li style="list-style: none;">
-        <a href="/panier">
-            <div style="position: relative; display: inline-block;">
-            <i id="sac2" style=" color: #F2B707; margin-right: 10px; font-size: 1.7rem" class="fa-solid fa-bag-shopping sac"></i>
-            <div class="point-rouge" id="point-rouge" style=" display: none; background-color: red; width: 10px; height: 10px; position: absolute; top: 0; right: 0; z-index: 40; border-radius: 50%;"></div>
-            </div>
-        </a>
+
+    <li style="list-style: none; margin-top: auto; margin-bottom: auto;" id="store">
+      <a href="/boutique">
+        <i style="color: grey; margin-right: 10px; font-size: 1.5rem" class="fa-solid fa-store"></i>
+      </a>
     </li>
-    <li style="text-align: start; list-style: none; color: grey">
-        <i id="me" style="color: grey; font-size: 1.9rem; margin-right: 10px" class="fa-solid fa-bars"></i>
+    <li style="list-style: none; margin-top: auto; margin-bottom: auto;" id="panier">
+      <a href="/panier">
+        <div style="position: relative; display: inline-block;">
+          <i id="sac2" style=" color: grey; margin-right: 10px; font-size: 1.7rem" class="fa-solid fa-bag-shopping sac"></i>
+          <div class="point-rouge" id="point-rouge" style=" display: none; background-color: red; width: 10px; height: 10px; position: absolute; top: 0; right: 0; z-index: 40; border-radius: 50%;"></div>
+        </div>
+      </a>
+    </li>
+    <li style="text-align: start; list-style: none; color: grey; margin-bottom: auto;">
+      <i id="me" style="color: grey; font-size: 1.9rem; margin-right: 10px" class="fa-solid fa-bars"></i>
     </li>
 
-    <div class="burger-menu shadow" id="burger-menu">
+    <div class="burger-menu shadow" id="burger-menu" style="width: 0%; ">
 
-            
-<p style="text-align: end; margin-right: 20px; margin-top: 9px;"><i style="font-size: 2rem" id="close" class="fa-solid fa-x"></i></p>
-        <ul id="nav-burger" style="list-style: none">
-            <li style="font-size: 1.4rem"  onclick="homeClick()">
-                <a id="home" href="./">accueil</a>
-            </li>
-            <br /> <br>
-            <li style="font-size: 1.4rem" id="boutique" onclick="boutiqueClick()">
-                <a href="./boutique">Boutique</a>
-            </li>
-            <br /> <br>
-            <li style="font-size: 1.4rem" id="apropos" onclick="aproposClick()">
-                <a href="./apropos">A propos</a>
-            </li>
-            <br /> <br>
-            <li style="font-size: 1.4rem" id="contact" onclick="contactClick()">
-                <a href="./contact">Contact</a>
-            </li>
-            <br />    <br> <br>
-            <!-- <div class="brand logo" style="
+
+      <p style="text-align: end; margin-right: 20px; margin-top: 9px;"><i style="font-size: 2rem" id="close" class="fa-solid fa-x"></i></p>
+      <ul id="nav-burger" style="list-style: none">
+        <li style="font-size: 1.4rem" onclick="homeClick()">
+          <a id="home" href="./">accueil</a>
+        </li>
+        <br /> <br>
+        <li style="font-size: 1.4rem" id="boutique" onclick="boutiqueClick()">
+          <a href="./boutique">Boutique</a>
+        </li>
+        <br /> <br>
+        <li style="font-size: 1.4rem" id="apropos" onclick="aproposClick()">
+          <a href="./apropos">A propos</a>
+        </li>
+        <br /> <br>
+        <li style="font-size: 1.4rem" id="contact" onclick="contactClick()">
+          <a href="./contact">Contact</a>
+        </li>
+        <br /> <br> <br>
+        <!-- <div class="brand logo" style="
             display: flex;
             font-size: 1.5rem;
             margin-left: 5px;
@@ -61,47 +66,54 @@
                 <span class="shop" style="color: #F2B707;text-decoration:underline;
                 ">Shop</span>
             </div> -->
-        </ul>
+      </ul>
     </div>
 
-      <ul id="nav-links">
-        <li  onclick="homeClick()"><a id="home" href="./">Home</a></li>
-        <li id="boutique" onclick="boutiqueClick()">
-            <a href="./boutique">Boutique</a>
-        </li>
-        <li id="apropos" onclick="aproposClick()">
-            <a href="./apropos">A propos</a>
-        </li>
-        <li id="contact" onclick="contactClick()">
-            <a href="./contact">Contact</a>
-        </li>
+    <ul id="nav-links">
+      <li onclick="homeClick()"><a id="home" href="./">Home</a></li>
+      <li id="boutique" onclick="boutiqueClick()">
+        <a href="./boutique">Boutique</a>
+      </li>
+      <li id="apropos" onclick="aproposClick()">
+        <a href="./apropos">A propos</a>
+      </li>
+      <li id="contact" onclick="contactClick()">
+        <a href="./contact">Contact</a>
+      </li>
     </ul>
     <!-- barre de recherche ici -->
     <div class="group" id="barre-top">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Recherche ..." type="search" class="input" id="search-input">
-      </div>
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <g>
+          <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+        </g>
+      </svg>
+      <input placeholder="Recherche ..." type="search" class="input" id="search-input">
+    </div>
     <!-- barre de recherche ici -->
-     <li style="list-style: none; margin-right: 2%">
-        <a href="/panier"><i style="color: #F2B707;" id="sac" class="fa-solid fa-bag-shopping"></i></a>
+    <li style="list-style: none; margin-right: 2%">
+      <a href="/panier"><i style="color: #F2B707;" id="sac" class="fa-solid fa-bag-shopping"></i></a>
     </li>
     <li style="text-align: end; list-style: none">
-        <a href="#" style="color: grey"><i id="menu" class="fa-solid fa-bars"></i></a>
+      <a href="#" style="color: grey"><i id="menu" class="fa-solid fa-bars"></i></a>
     </li>
-</nav>
-<br>
-    <!-- barre de recherche ici -->
-    <div class="group" id="barre-bottom">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Recherche ..." type="search" class="input" id="search-input2">
-      </div>
-    <!-- barre de recherche ici -->
+  </nav>
+  <br>
+  <!-- barre de recherche ici -->
+  <div class="group" id="barre-bottom">
+    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+      <g>
+        <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+      </g>
+    </svg>
+    <input placeholder="Recherche ..." type="search" class="input" id="search-input2">
+  </div>
+  <!-- barre de recherche ici -->
 
-<div class="menu-bg" id="menu-bg"></div>
+  <div class="menu-bg" id="menu-bg"></div>
 
-<script>
+  <script>
 
 
 
-</script>
-
+  </script>

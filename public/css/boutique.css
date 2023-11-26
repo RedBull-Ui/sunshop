@@ -12,9 +12,7 @@
 nav #menu{
     display: none;
     }
-    nav #burger-menu{
-        display: none;
-        }
+
     
     nav .burger-menu{
         position: absolute;
@@ -34,6 +32,9 @@ nav #menu{
     nav #me{
         display: none;
     }
+   nav #point-rouge{
+      display: none !important;
+   }
 
 body {
     max-width: 100%;
@@ -345,17 +346,18 @@ body li {
 
 /* -------------burger menu--------------  */
 nav .burger-menu{
-    display: none;
     height: 80vh;
     width: 80%;
     top: 0;
     right: 0;
     position: absolute;
     border-radius: 66% 34% 0% 100% / 24% 0% 100% 76%;
+    transition: 0.2s ease-out;
 
-    backdrop-filter: blur(1px); /* Ajustez la valeur de flou selon vos préférences */
-    background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond floue avec opacité */
-}
+    backdrop-filter: blur(35px); /* Ajustez la valeur de flou selon vos préférences */
+    background-color: rgba(255, 255, 255, 0.665); /* Couleur de fond floue avec opacité */
+    
+  }
 .burger-menu ul {
     margin-left: auto;
     display: flex;
@@ -368,6 +370,7 @@ nav .burger-menu{
 nav #nav-links {
     display: none;
 }
+
 
 body #top {
     display: flex;
@@ -429,7 +432,7 @@ nav #nav-links {
  }
  nav ul a {
     /*  margin-bottom: 25px; Add space between navigation links */
-    font-family: 'Concert One', cursive;
+    font-family: 'Concert One', cursive, italic;
      font-size: 1rem;
      color:  rgba(0, 0, 0, 0.668);
      margin-top: 0px;

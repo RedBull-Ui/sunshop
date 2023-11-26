@@ -13,9 +13,7 @@
 nav #menu{
     display: none;
     }
-    nav #burger-menu{
-        display: none;
-        }
+
     
     nav .burger-menu{
         position: absolute;
@@ -195,15 +193,17 @@ body li {
 
     /* -------------burger menu--------------  */
     nav .burger-menu{
-        display: none;
         height: 80vh;
         width: 80%;
         top: 0;
         right: 0;
         position: absolute;
+        transition: 0.2s ease-out;
         border-radius: 66% 34% 0% 100% / 24% 0% 100% 76%;
-        backdrop-filter: blur(10px); /* Ajustez la valeur de flou selon vos préférences */
-  background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond floue avec opacité */
+        
+        backdrop-filter: blur(35px); /* Ajustez la valeur de flou selon vos préférences */
+        background-color: rgba(255, 255, 255, 0.665); /* Couleur de fond floue avec opacité */
+    
   /* Autres styles pour votre élément */
     }
     .burger-menu ul {
@@ -258,15 +258,15 @@ body li {
      }
      nav ul a {
         /*  margin-bottom: 25px; Add space between navigation links */
-        font-family: 'Concert One', cursive;
-         font-size: 1rem;
-         color:  rgba(0, 0, 0, 0.668);
+        font-family: 'Concert One', cursive, italic;
+        color:  rgba(0, 0, 0, 0.668);
          margin-top: 0px;
          text-transform: uppercase;
          text-decoration: none;
          font-weight: bolder;
          font-family: 'Young Serif', serif;
          letter-spacing: 5px;
+         font-size: large;
       
       }
     #barre-top {

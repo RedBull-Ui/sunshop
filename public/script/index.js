@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    boutique.style.display= "none"
+    contact.style.display= "none"
+    apropos.style.display= "none"
+    home.style.display= "none"
+
+    var storeIcon = document.getElementById('store');
+    var panierIcon = document.getElementById('panier');
+    const state = localStorage.getItem('state')
+    
+    if (state === 'panier') {
+        storeIcon.style.display = 'block';
+        panierIcon.style.display = 'none';
+    } else {
+        storeIcon.style.display = 'none';
+        panierIcon.style.display = 'block';
+    }
+    
+
     var pointRougeState = localStorage.getItem('pointRouge');
     var pointRouge = document.getElementById('point-rouge') ;
 
@@ -9,6 +27,36 @@ document.addEventListener('DOMContentLoaded', function () {
     }else{
         pointRouge.style.display= 'none';
     }
+
+    mettreAJourPointRouge();
+
+    function mettreAJourPointRouge() {
+        const pointRouge = document.getElementById('point-rouge');
+      
+        // Vérifiez si localStorage est disponible
+        if (typeof localStorage !== 'undefined') {
+          // Récupère le panier depuis le localStorage
+          const panier = JSON.parse(localStorage.getItem('panier')) || [];
+      
+          // Vérifie si le panier n'est pas vide
+          if (panier.length > 0) {
+            // Mettez 'pointRouge' sur 'on' et affichez l'élément
+            localStorage.setItem('pointRouge', 'on');
+            pointRouge.style.display = 'block';
+          } else {
+            // Aucun produit trouvé, mettez 'pointRouge' sur 'off' et masquez l'élément
+            localStorage.setItem('pointRouge', 'off');
+            pointRouge.style.display = 'none';
+          }
+        } else {
+          // Gérez le cas où localStorage n'est pas disponible
+          localStorage.setItem('pointRouge', 'off');
+          pointRouge.style.display = 'none';
+          console.error('localStorage is not available.');
+        }
+      }
+      
+      
 
 
     ////////// la recherche ici ../////////
@@ -131,10 +179,10 @@ document.addEventListener('DOMContentLoaded', gérerÉtatMenu);
 
 
 
-function boutique() {
+function boutiqueF() {
     window.location.href = '/boutique'
 }
-function home() {
+function homeF() {
     window.location.href = '/'
 }
 // Toggle the burger menu on click
@@ -146,22 +194,35 @@ const menu = document.getElementById('me');
 const closeButton = document.getElementById('close');
 var burger = document.getElementById('burger-menu');
 
+const home = document.getElementById('home');
+    const panier = document.getElementById('sac');
+    const boutique = document.getElementById('boutique');
+    const contact = document.getElementById('contact');
+    const apropos = document.getElementById('apropos');
 
 // Ajouter un gestionnaire d'événements pour le clic sur le bouton du menu hamburger
 menu.addEventListener('click', () => {
-    burger.style.display = "block";
+
+    boutique.style.display= "block"
+    contact.style.display= "block"
+    apropos.style.display= "block"
+    home.style.display= "block"
+
+    burger.style.width = "70%";
 
 });
 
 // Ajouter un gestionnaire d'événements pour le clic sur le bouton de fermeture
 closeButton.addEventListener('click', () => {
-    burger.style.display = "none";
+
+    boutique.style.display= "none"
+    contact.style.display= "none"
+    apropos.style.display= "none"
+    home.style.display= "none"
+
+    burger.style.width = "0%";
 
 });
-function menuOnclick() {
-
-}
-
 
 
 
