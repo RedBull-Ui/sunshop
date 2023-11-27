@@ -453,6 +453,7 @@ nav #sac2{
   .carte {
     margin: 10px 0; /* Ajuster la marge pour les mobiles */
     display: flex;
+    justify-content: space-between;
     width: auto;
     box-sizing: border-box;
   }
@@ -463,13 +464,15 @@ nav #sac2{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 100px;
   padding: 20px;
   margin-right: 20px;
+  border: 1px dashed red;
 }
 .carte p{
   color: #000a03;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
   .carte select {
     width: 55px;

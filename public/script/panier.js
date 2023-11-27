@@ -133,15 +133,19 @@ function effacer() {
       localStorage.setItem('panier', JSON.stringify(panier));
     }
   
-    // Cachez l'élément parent (la carte de produit) en utilisant display: none
-    const productCard = event.target.closest('.card');
+    // Récupérez l'élément parent (la carte de produit)
+    const productCard = event.target.closest('.carte');
+  
+    // Vérifiez si la carte existe
     if (productCard) {
+      // Cachez l'élément parent (la carte de produit) en utilisant display: none
       productCard.style.display = 'none';
   
       // Mettez à jour le point rouge après la suppression du produit
       mettreAJourPointRouge();
     }
   }
+  
   
 }
 
