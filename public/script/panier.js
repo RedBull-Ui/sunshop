@@ -13,12 +13,12 @@ if (typeof localStorage !== 'undefined') {
     const card = document.createElement('div');
     card.className = 'col-md-4';
     card.innerHTML = `
-      <div class="card shadow-sm">
+      <div class="carte shadow-sm">
         <div class="cardTop">
-          <img src="${produit.url}" width="100" alt="${produit.nom}">
+          <img src="${produit.url}" alt="${produit.nom}">
         </div>
         <div class="cardBottom">
-          <h6>${produit.nom}</h6>
+          <h6><strong>${produit.nom}</strong></h6>
           
           <div class="cardFooter">
             <div class="prix-quantite">
@@ -38,7 +38,7 @@ if (typeof localStorage !== 'undefined') {
                 <option value="10">10</option>
               </select>
             </div>
-            <!-- Bouton "Supprimer" minimaliste avec data-product-id --> <br> <br>
+            <!-- Bouton "Supprimer" minimaliste avec data-product-id --> <br>
             <i class="fas fa-trash-alt supprimer" onclick="effacer()" data-product-id="${produit.id}"></i>
           </div>
         </div>

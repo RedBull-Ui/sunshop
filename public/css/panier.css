@@ -172,7 +172,7 @@ body .all {
   margin-bottom: 20px; /* Ajuster la marge pour les mobiles */
 }
 
-.card {
+.carte {
   border: 1px solid #e0e0e0;
   padding: 10px;
   margin: 10px;
@@ -191,12 +191,12 @@ body .all {
   margin: 5px 0;
 }
 
-.card a {
+.carte a {
   color: grey;
   text-decoration: none;
 }
 
-.card select {
+.carte select {
   width: 80px;
   height: 30px;
   padding: 5px;
@@ -206,7 +206,7 @@ body .all {
   outline: none;
 }
 
-.card .cardTop {
+.carte .cardTop {
   border: 1px solid rgba(128, 128, 128, 0.16);
   border-radius: 10px;
   padding: 2px;
@@ -248,29 +248,29 @@ select {
 .fa-trash-alt:hover {
   color: #c9302c;
 }
-.card {
+.carte {
   width: 300px;
 }
-.card .cardFooter {
+.carte .cardFooter {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.card .cardFooter .fa-star {
+.carte .cardFooter .fa-star {
   color: gold;
 }
 
-/* .card .cardTop img {
+/* .carte .cardTop img {
   width: 120px;
   height: 100px;
 } */
-.card .cardTop img {
+.carte .cardTop img {
   height: auto; /* Ajuster la hauteur des images pour les mobiles */
   width: 150px;
 }
 
-.card .panierTonne {
+.carte .panierTonne {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,17 +282,17 @@ select {
   transition: 0.3s;
 }
 
-.card .panierTonne:hover {
+.carte .panierTonne:hover {
   background-color: rgba(32, 173, 22, 0.644);
 }
 
-.card .fa-cart-plus {
+.carte .fa-cart-plus {
   color: rgb(6, 118, 42);
   cursor: pointer;
   transition: 0.3s;
 }
 
-.card .fa-cart-plus:hover {
+.carte .fa-cart-plus:hover {
   color: white;
 }
 
@@ -450,19 +450,37 @@ nav #sac2{
     margin-bottom: 20px; /* Réduire la marge pour les mobiles */
   }
 
-  .card {
+  .carte {
     margin: 10px 0; /* Ajuster la marge pour les mobiles */
+    display: flex;
+    width: auto;
+    box-sizing: border-box;
   }
-
-  .card select {
-    width: 70px;
+  .carte .cardTop img{
+    width: 50px;
+  }
+.cardTop{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  padding: 20px;
+  margin-right: 20px;
+}
+.carte p{
+  color: #000a03;
+  font-size: 1.2rem;
+}
+  .carte select {
+    width: 55px;
   }
 
   .fa-trash-alt {
     font-size: 18px;
+    margin-left: auto;
   }
 
-  .card .panierTonne {
+  .carte .panierTonne {
     height: 30px;
     width: 30px;
   }
