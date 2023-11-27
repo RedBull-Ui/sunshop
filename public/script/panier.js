@@ -38,7 +38,7 @@ if (typeof localStorage !== 'undefined') {
                 <option value="10">10</option>
               </select>
             </div>
-            <!-- Bouton "Supprimer" minimaliste avec data-product-id -->
+            <!-- Bouton "Supprimer" minimaliste avec data-product-id --> <br> <br>
             <i class="fas fa-trash-alt supprimer" onclick="effacer()" data-product-id="${produit.id}"></i>
           </div>
         </div>
@@ -154,7 +154,7 @@ function swipe() {
   if (panier.length === 0) {
     // Effectuez une action si le panier est vide
     var notif = document.getElementById('notif');
-    notif.innerText = '🌹 Panier vide !';
+    notif.innerText = '🍃 Panier vide !';
     console.log('Le panier est vide.');
   } else {
     // Effectuez une action si le panier n'est pas vide
