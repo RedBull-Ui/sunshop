@@ -466,8 +466,11 @@ nav #sac2{
   justify-content: center;
   width: 100px;
   padding: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
   border: 1px dashed red;
+}
+#quantite{
+  margin: 15px;
 }
 .carte p{
   color: #000a03;

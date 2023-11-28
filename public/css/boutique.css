@@ -278,8 +278,9 @@ body .row {
     */
 .card .cardTop img {
   border-radius: 11px;
-  height: 128px; /* Ajuster la hauteur des images pour les mobiles */
-  width: 170px;
+  height: 155px; /* Ajuster la hauteur des images pour les mobiles */
+  /* width: 170px; */
+  width: auto;
 }
 
 .card .panierTonne {
