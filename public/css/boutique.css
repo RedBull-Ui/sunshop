@@ -39,7 +39,10 @@ nav #menu{
 body {
     max-width: 100%;
 }
-
+a {
+  text-decoration: none;
+  color: black;
+}
 body nav {
     display: flex;
     justify-content: center;
@@ -99,6 +102,7 @@ nav #sac2 {
    .input {
     width: 100%;
     height: 40px;
+    margin-top: 25px;
     line-height: 28px;
     padding: 0 1rem;
     padding-left: 2.5rem;
@@ -127,6 +131,7 @@ nav #sac2 {
     fill: #9e9ea7;
     width: 1rem;
     height: 1rem;
+    margin-top: 25px;
    }   
    #barre-bottom {
     display: none;
@@ -489,41 +494,45 @@ nav #nav-links {
     cursor: pointer;
     transition: color 0.15s ease-in;
   }
-  
-
-  
-  .container input[type="radio"]:checked + label {
-    color: #185ee0;
-  }
-  
-  .container input[type="radio"]:checked + label > .notification {
-    background-color: #185ee0;
-    color: #fff;
-    margin: 0px;
-  }
-  
-  .container input[id="radio-1"]:checked ~ .glider {
-    transform: translateX(0);
-  }
-  
-  .container input[id="radio-2"]:checked ~ .glider {
-    transform: translateX(100%);
-  }
-  
-  .container input[id="radio-3"]:checked ~ .glider {
-    transform: translateX(200%);
-  }
-  
-  .glider {
-    position: absolute;
+  .categories-list{
+    padding: 5px;
     display: flex;
-    height: 40px;
-    width: 160px;
-    background-color: #24acf529;
-    z-index: 1;
-    border-radius: 99px;
-    transition: 0.25s ease-out;
+    overflow-x: auto;
+    max-width: 99%;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+
   }
+  .categories-list .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    box-sizing: border-box;
+    min-width: auto;
+    white-space: nowrap;
+ 
+  }
+ 
+  .avatar #v-text{
+    font-size: 1.3rem;
+    font-weight: bolder;
+  }
+  .avatar span{
+    font-size: 0.9rem;
+  }
+  .categories-list .logo{
+    min-height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
   body {
     max-width: 100%;
     margin: 0; /* Cela centre votre contenu horizontalement */

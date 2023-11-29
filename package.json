@@ -4,7 +4,7 @@
   "description": "site pour vente de complement alimentaire",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "privat kouadio",
   "license": "ISC",
