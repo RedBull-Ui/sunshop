@@ -72,6 +72,29 @@ app.get('/neocell', async (req, res) => {
     res.status(500).json({ error: 'Erreur de base de données' });
   }
 });
+app.get('/nutrimea', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'NUTRIMEA';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'nutrimea' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const nutrimea = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('nutrimea.ejs', { nutrimea });
+    console.log(nutrimea);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
 
 app.get('/nivea', async (req, res) => {
   try {
@@ -100,7 +123,7 @@ app.get('/nivea', async (req, res) => {
 app.get('/vaseline', async (req, res) => {
   try {
     const maCollection = db.collection('produits');
-    const motCle = 'vaseline';
+    const motCle = 'VASELINE';
 
     // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'vaseline' dans le champ 'nom'
     const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
@@ -115,6 +138,29 @@ app.get('/vaseline', async (req, res) => {
 
     res.render('vaseline.ejs', { vaseline });
     console.log(vaseline);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+app.get('/lashile', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'LASHILE';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'lashile' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const lashile = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('lashile.ejs', { lashile });
+    console.log(lashile);
   } catch (error) {
     console.error('Erreur lors de la recherche :', error);
     res.status(500).json({ error: 'Erreur de base de données' });
