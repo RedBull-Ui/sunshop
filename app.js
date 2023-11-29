@@ -143,6 +143,103 @@ app.get('/vaseline', async (req, res) => {
     res.status(500).json({ error: 'Erreur de base de données' });
   }
 });
+
+app.get('/webber', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'WEBBER';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'webber' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const webber = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('webber.ejs', { webber });
+    console.log(webber);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
+app.get('/jamieson', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'JAMIESON';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'jamieson' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const jamieson = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('jamieson.ejs', { jamieson });
+    console.log(jamieson);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
+app.get('/oneDay', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'ONE';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'oneDay' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const oneDay = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('oneDay.ejs', { oneDay });
+    console.log(oneDay);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
+app.get('/cerave', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'CERAVE';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'cerave' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const cerave = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('cerave.ejs', { cerave });
+    console.log(cerave);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
 app.get('/lashile', async (req, res) => {
   try {
     const maCollection = db.collection('produits');
