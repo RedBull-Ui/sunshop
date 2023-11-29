@@ -73,6 +73,30 @@ app.get('/neocell', async (req, res) => {
   }
 });
 
+app.get('/nivea', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'NIVEA';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'nivea' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const nivea = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('nivea.ejs', { nivea });
+    console.log(nivea);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
 
 app.get('/panier', function (req, res) {
   res.render('panier.ejs');
