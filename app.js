@@ -192,6 +192,30 @@ app.get('/jamieson', async (req, res) => {
   }
 });
 
+app.get('/theOrdinary', async (req, res) => {
+  try {
+    const maCollection = db.collection('produits');
+    const motCle = 'THE ORDINARY';
+
+    // Utilisation d'une expression régulière pour rechercher la sous-chaîne 'theOrdinary' dans le champ 'nom'
+    const querySnapshot = await maCollection.where('nom', '>=', motCle).where('nom', '<=', motCle + '\uf8ff').get();
+
+    const theOrdinary = querySnapshot.docs.map((doc) => {
+      const produitData = doc.data();
+      return {
+        ...produitData,
+        id: doc.id, // Utilisez l'ID réel du document Firestore
+      };
+    });
+
+    res.render('theOrdinary.ejs', { theOrdinary });
+    console.log(theOrdinary);
+  } catch (error) {
+    console.error('Erreur lors de la recherche :', error);
+    res.status(500).json({ error: 'Erreur de base de données' });
+  }
+});
+
 app.get('/oneDay', async (req, res) => {
   try {
     const maCollection = db.collection('produits');
