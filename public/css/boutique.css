@@ -494,6 +494,9 @@ nav #nav-links {
     cursor: pointer;
     transition: color 0.15s ease-in;
   }
+
+    /* categories list  */
+
   .categories-list{
     padding: 5px;
     display: flex;
@@ -532,7 +535,8 @@ nav #nav-links {
     justify-content: center;
     color: white;
   }
-  
+
+  /* categories list  */
   body {
     max-width: 100%;
     margin: 0; /* Cela centre votre contenu horizontalement */
