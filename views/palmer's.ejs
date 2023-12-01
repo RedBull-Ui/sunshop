@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" href="/css/boutique.css">
-  <title>Mes produits</title> <br>
+  <title> Palmer's coconut</title> <br>
 
   <script>
     localStorage.setItem('state', 'boutique')
@@ -41,115 +41,19 @@
 
 <body>
   <%- include('composants/nav.ejs')  %>
-  <div class=" hastag">
-    <div class="overlay">
-      <p style="text-align: center;">Les filtre C'est Joli, mais prendre Soin de sa peau C'est mieux !</p>
-    </div>
-  </div>
+
+  <br> <br>
   <br>
-  <h1 style="text-align: center;">Nos Produits</h1> <br>
+  <button type="button" class="btn btn-light" onclick="window.location.href='/boutique' ">Retour</button>
 
-  <div class="categories-list">
-    <div class="avatar">
-        <a href="/oneDay">
-      <div style="background-color: orange;" class="logo">
-        <span id="v-text">O D</span>
-      </div>
-      <span>ONE DAY</span>
-      </a>
-    </div>
-    <div class="avatar">
-    <a href="/neocell">
-      <div style="background-color: #D500F9;" class="logo">
-        <span id="v-text">NC</span>
-      </div>
-      <span>NEOCELL</span>
-    </a>
-    </div>
-    <div class="avatar">
-        <a href="/vaseline">
-      <div style="background-color: #F50057
-      ;" class="logo">
-        <span id="v-text">V</span>
-      </div>
-      <span>VASELINE</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/nutrimea">
-      <div style="background-color: #1E88E5 ;" class="logo">
-        <span id="v-text">N</span>
-      </div>
-      <span>NUTRIMEA</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/cerave">
-      <div style="background-color: #26A69A ;" class="logo">
-        <span id="v-text">CV</span>
-      </div>
-      <span>CERAVE</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/lashile">
-      <div style="background-color: #F06292;" class="logo">
-        <span id="v-text">L</span>
-      </div>
-      <span>LASHILE</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/theOrdinary">
-      <div style="background-color: #00BCD4;" class="logo">
-        <span id="v-text">T O</span>
-      </div>
-      <span>ORDINARY</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/webber">
-      <div style="background-color: #EF5350;" class="logo">
-        <span id="v-text">W B</span>
-      </div>
-      <span>WEBBER</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/palmers">
-      <div style="background-color: #FF6D00;" class="logo">
-        <span id="v-text">P</span>
-      </div>
-      <span>PALMER'S</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/jamieson">
-      <div style="background-color: #00B0FF;" class="logo">
-        <span id="v-text">G C</span>
-      </div>
-      <span>JAMIESON</span>
-      </a>
-    </div>
-    <div class="avatar">
-        <a href="/nivea">
-      <div style="background-color: #6D4C41;" class="logo">
-        <span id="v-text">N</span>
-      </div>
-      <span style="margin-left: 10px;">NIVEA</span>
-      </a>
-    </div>
-
-  </div>
-
-
-
+    <br>
+    <h1 style="text-align: center;"> Palmer's coconut</h1> <br>
   <div class="row">
-    <% produits.forEach((produit) => { %>
+    <% palmers.forEach((produit) => { %>
     <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>" style="height: auto;">
       <div class="card mb-10 shadow-sm">
         <div class="cardTop">
-          <img src="<%= produit.url %>" alt="<%= produit.nom %>">
+          <img src="<%= produit.url %>" alt="">
         </div>
         <div class="cardBottom">
           <h6 style="text-transform: uppercase;"><%= produit.nom %></h6>
@@ -210,14 +114,6 @@
 
 </body>
 <script>
-  // Vérifiez s'il y a au moins une clé Local Storage commençant par "produit_"
-  let hasProduitKeys = false;
-  for (let key in localStorage) {
-    if (key.startsWith("produit_")) {
-      hasProduitKeys = true;
-      break;
-    }
-  }
 
   // Sélectionnez votre icône de panier (supposons que son ID est "icon-panier")
   const iconPanier = document.getElementById("sac2");

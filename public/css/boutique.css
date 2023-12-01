@@ -189,7 +189,52 @@ body .hastag {
     color: white;
     font-size: 1.5rem; /* Réduire la taille de la police pour les mobiles */
 }
+/* categories list  */
 
+.categories-list{
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  max-width: 99%;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  padding: 0px 30px 0px 30px;
+
+}
+.categories-list .avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  box-sizing: border-box;
+  min-width: auto;
+  white-space: nowrap;
+
+}
+
+.avatar #v-text{
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+.avatar span{
+  font-size: 0.9rem;
+  text-align: center;
+
+}
+.categories-list .logo{
+  min-height: 65px;
+  min-width: 65px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* categories list  */
 body .row {
     padding: 30px; /* Réduire la marge pour les mobiles */
 }
@@ -198,6 +243,7 @@ body .row {
   width: 100%;
   margin: 0;
 }
+
 .row .card {
     height: auto;
     width: 100%; /* Ajuster la largeur des cartes pour les mobiles */
