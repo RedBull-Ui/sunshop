@@ -460,14 +460,15 @@ nav #sac2{
   .carte .cardTop img{
     width: 50px;
   }
-.cardTop{
+.carte .cardTop{
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100px;
   padding: 20px;
   margin-right: 10px;
-  border: 1px dashed red;
+  border: none;
+  border-right: 1px solid rgba(128, 128, 128, 0.564);
 }
 #quantite{
   margin: 15px;
