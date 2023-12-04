@@ -332,8 +332,10 @@ app.get('/effectuer', function (req, res) {
 // ... Autres configurations et routes ...
 
 app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
-  const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
-  const chatId = '1016981131';
+  const botToken = '6506765424:AAF3CYqn09mmz05tO-nWdP-dZoGIH3lU2g0';
+  const chatId = '6567421117';
+  // const botToken = '5244781796:AAGCvFJnb8M6TcmUGidpMs4Ox8Rs72PVi-U';
+  // const chatId = '1016981131';
 
   // Assurez-vous que le corps de la requête contient les champs "panier", "nomPrenom" et "numeroTelephone"
   const { panier, nomPrenom, numeroTelephone } = req.body;
