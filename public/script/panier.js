@@ -11,10 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return alert('Le panier est vide.')
     } else {
       // Effectuez une action si le panier n'est pas vide
-      var notif = document.getElementById('notif');
-      notif.innerText = '';
       console.log('Le panier n\'est pas vide.');
-  
       // Ajoutez ici le code pour rediriger seulement lorsque le panier n'est pas vide
       window.location.href = '/regler';
     }
