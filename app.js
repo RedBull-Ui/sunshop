@@ -345,7 +345,7 @@ app.post('/envoyer-sur-telegram', bodyParser.json(), async (req, res) => {
       // Formatez les éléments du panier dans un message lisible
       const panierMessage = panier.map(item => `Produit: ${item.nom}, Prix: ${item.prix} CFA`).join('\n');
 
-      const message = `✅ Nouvelle commande de : \n${nomPrenom} (${numeroTelephone}).\n\n📝 Détails de la commande:\n${panierMessage}`;
+      const message = `✅ Nouvelle commande de : \n${nomPrenom} (${numeroTelephone}).\n\n📝 Détails de la commande:\n${panierMessage}\n \n 🛵 + 1000 CFA frais de livraison`;
       
       const response = await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
       
