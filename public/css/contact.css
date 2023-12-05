@@ -125,7 +125,7 @@ body .hastag{
     margin-top: 20px;
     width: 100%;
     min-height: 310px;
-    background: url(/img/calm.jpg) center/cover no-repeat;
+    background: url(/img/calm.webp) center/cover no-repeat;
 }
 .hastag .overlay{
     height: 310px;
@@ -326,7 +326,7 @@ body .hastag {
     margin-top: 20px;
     width: 100%;
     min-height: 200px; /* Ajuster la hauteur pour les téléphones */
-    background: url(/img/calm.jpg) center/cover no-repeat;
+    background: url(/img/calm.webp) center/cover no-repeat;
 }
 
 .hastag .overlay {

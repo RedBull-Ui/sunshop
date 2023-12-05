@@ -111,7 +111,7 @@ body .hastag {
     margin-top: 20px;
     width: 100%;
     min-height: 310px;
-    background: url(/img/fleurs.jpg) center/cover no-repeat;
+    background: url(/img/fleurs.webp) center/cover no-repeat;
 }
 
 .hastag .overlay {

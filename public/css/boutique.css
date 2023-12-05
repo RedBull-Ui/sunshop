@@ -177,7 +177,7 @@ body .hastag {
     margin-top: 20px;
     width: 100%;
     min-height: 190px;
-    background: url(/img/boutique.jpg) center/cover no-repeat;
+    background: url(/img/boutique.webp) center/cover no-repeat;
 }
 
 .hastag .overlay {
