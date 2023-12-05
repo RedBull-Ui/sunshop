@@ -239,7 +239,7 @@ select {
 }
 
 .fa-trash-alt {
-  font-size: 30px;
+  font-size: 20px;
   color: #57555582;
   cursor: pointer;
   transition: color 0.3s;
@@ -249,7 +249,7 @@ select {
   color: #c9302c;
 }
 .carte {
-  width: 300px;
+  width: 230px;
 }
 .carte .cardFooter {
   display: flex;
@@ -267,7 +267,7 @@ select {
 } */
 .carte .cardTop img {
   height: auto; /* Ajuster la hauteur des images pour les mobiles */
-  width: 150px;
+  width: 130px;
 }
 
 .carte .panierTonne {

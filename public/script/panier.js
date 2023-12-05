@@ -86,7 +86,7 @@ function afficherProduitsEtTotal(panier) {
 
 function creerCarteProduit(produit) {
   const card = document.createElement('div');
-  card.className = 'col-md-4';
+  card.className = 'col-md-3';
   card.innerHTML = `
     <div class="carte shadow-sm">
       <div class="cardTop">
