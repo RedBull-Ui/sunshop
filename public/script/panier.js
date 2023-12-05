@@ -1,109 +1,136 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector('.row');
 
-  var pointRouge = document.getElementById('point-rouge');
+  window.swipe = function() {
+    // Récupérez le tableau panier depuis le localStorage
+    const panier = JSON.parse(localStorage.getItem('panier')) || [];
+  
+    // Vérifie si le panier est vide
+    if (panier.length === 0) {
+      
+      console.log('Le panier est vide.');
+      return alert('Le panier est vide.')
+    } else {
+      // Effectuez une action si le panier n'est pas vide
+      var notif = document.getElementById('notif');
+      notif.innerText = '';
+      console.log('Le panier n\'est pas vide.');
+  
+      // Ajoutez ici le code pour rediriger seulement lorsque le panier n'est pas vide
+      window.location.href = '/regler';
+    }
+  }
+
+  const totalSpan = document.querySelector('.total-span');
+  let panier = [];
 
   // Vérifie si localStorage est disponible
-if (typeof localStorage !== 'undefined') {
-  // Obtenez le tableau panier depuis le localStorage
-  const panier = JSON.parse(localStorage.getItem('panier')) || [];
-
-  // Parcourez les produits dans le panier et affichez-les
-  panier.forEach((produit) => {
-    const card = document.createElement('div');
-    card.className = 'col-md-4';
-    card.innerHTML = `
-      <div class="carte shadow-sm">
-        <div class="cardTop">
-          <img src="${produit.url}" alt="${produit.nom}">
-        </div>
-        <div class="cardBottom">
-          <h6><strong>${produit.nom}</strong></h6>
-          
-          <div class="cardFooter">
-            <div class="prix-quantite">
-              <!-- Affichage du prix -->
-              <p class="prix">${produit.prix} CFA</p>
-              <!-- Menu déroulant pour la quantité -->
-              <select name="quantite" id="quantite">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-            </div>
-            <!-- Bouton "Supprimer" minimaliste avec data-product-id --> <br>
-            <i class="fas fa-trash-alt supprimer" onclick="effacer()" data-product-id="${produit.id}"></i>
-          </div>
-        </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-
-  // Si des produits ont été trouvés, mettez 'pointRouge' sur 'on' et affichez l'élément
-  if (panier.length > 0) {
-    localStorage.setItem('pointRouge', 'on');
-    pointRouge.style.display = 'block';
-    mettreAJourPointRouge();
-  } else {
-    // Aucun produit trouvé, mettez 'pointRouge' sur 'off' et masquez l'élément
-    localStorage.setItem('pointRouge', 'off');
-    pointRouge.style.display = 'none';
-    mettreAJourPointRouge();
-  }
-} else {
-  // Gérez le cas où localStorage n'est pas disponible
-  localStorage.setItem('pointRouge', 'off');
-  pointRouge.style.display = 'none';
-  console.error('localStorage is not available.');
-}
-
- })
-
-function mettreAJourPointRouge() {
-  const pointRouge = document.getElementById('point-rouge');
-
-  // Vérifiez si localStorage est disponible
   if (typeof localStorage !== 'undefined') {
-    // Parcourez les clés du localStorage pour vérifier s'il y a des produits
-    let produitFound = false;
+    // Obtenez le tableau panier depuis le localStorage
+    panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-    Object.keys(localStorage).forEach((key) => {
-      if (key.startsWith('produit_')) {
-        produitFound = true;
-        return; // Sortez de la boucle dès qu'un produit est trouvé
-      }
-    });
+    // Affichez les produits et calculez le total
+    afficherProduitsEtTotal(panier);
 
-    // Si un produit a été trouvé, mettez 'pointRouge' sur 'on' et affichez l'élément
-    if (produitFound) {
-      localStorage.setItem('pointRouge', 'on');
-      pointRouge.style.display = 'block';
-    } else {
-      // Aucun produit trouvé, mettez 'pointRouge' sur 'off' et masquez l'élément
-      localStorage.setItem('pointRouge', 'off');
-      pointRouge.style.display = 'none';
-    }
+    // Ajoutez un gestionnaire d'événements de clic à chaque icône de corbeille
+    ajouterGestionnaireEffacer();
+
+    // ... Votre code existant
+
   } else {
     // Gérez le cas où localStorage n'est pas disponible
     localStorage.setItem('pointRouge', 'off');
     pointRouge.style.display = 'none';
     console.error('localStorage is not available.');
   }
+});
+
+function calculerTotal(panier) {
+  if (panier.length === 0) {
+    return 0;
+  }
+
+  let totalPrix = 0;
+
+  panier.forEach((produit) => {
+    totalPrix += parseFloat(produit.prix.replace(/\s/g, '').replace(',', '.'));
+  });
+
+  return totalPrix + 1000;
 }
 
-function effacer() {
+
+function afficherProduitsEtTotal(panier) {
+  const container = document.querySelector('.row');
+  const totalSpan = document.querySelector('.total-span');
+
+  // Vide le contenu du conteneur avant d'afficher les produits
+  container.innerHTML = '';
+
+  // Parcourez les produits dans le panier et affichez-les
+  panier.forEach((produit) => {
+    const card = creerCarteProduit(produit);
+    container.appendChild(card);
+  });
+
+  // Ajoutez 1000 au total
+  let totalPrix = 0;
+  panier.forEach((produit) => {
+    totalPrix += parseFloat(produit.prix.replace(/\s/g, '').replace(',', '.'));
+  });
+  totalPrix += 1000;
+
+  // Mettez à jour le total affiché dans le DOM
+  if (totalSpan) {
+    const totalPrix = calculerTotal(panier);
+    totalSpan.textContent = `Total: ${totalPrix.toFixed(2)} CFA`; // Arrondir à 2 décimales
+  }
+}
+
+
+function creerCarteProduit(produit) {
+  const card = document.createElement('div');
+  card.className = 'col-md-4';
+  card.innerHTML = `
+    <div class="carte shadow-sm">
+      <div class="cardTop">
+        <img src="${produit.url}" alt="${produit.nom}">
+      </div>
+      <div class="cardBottom">
+        <h6><strong>${produit.nom}</strong></h6>
+        
+        <div class="cardFooter">
+          <div class="prix-quantite">
+            <!-- Affichage du prix -->
+            <p class="prix">${produit.prix} CFA</p>
+            <!-- Menu déroulant pour la quantité -->
+            <select name="quantite" id="quantite">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <!-- Bouton "Supprimer" minimaliste avec data-product-id -->
+          <br>
+          <i class="fas fa-trash-alt supprimer" data-product-id="${produit.id}"></i>
+        </div>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function ajouterGestionnaireEffacer() {
   // Sélectionnez tous les éléments ayant la classe "fa-trash-alt"
   const trashIcons = document.querySelectorAll('.fa-trash-alt');
 
-  // Retirez d'abord tous les gestionnaires d'événements existants pour éviter les doublons
+  // Retirez tous les gestionnaires d'événements existants
   trashIcons.forEach((icon) => {
     icon.removeEventListener('click', handleClick);
   });
@@ -115,57 +142,20 @@ function effacer() {
 
   // Définition du gestionnaire d'événements de clic
   function handleClick(event) {
-    // Récupérez l'ID du produit associé à l'icône
     const productId = event.target.getAttribute('data-product-id');
-  
-    // Obtenez le tableau panier depuis le localStorage
-    const panier = JSON.parse(localStorage.getItem('panier')) || [];
-  
-    // Recherchez l'index du produit dans le panier en utilisant son ID
+
+    // Récupérez le tableau panier depuis le localStorage
+    let panier = JSON.parse(localStorage.getItem('panier')) || [];
+
     const productIndex = panier.findIndex((produit) => produit.id === productId);
-  
-    // Vérifiez si le produit a été trouvé dans le panier
+
     if (productIndex !== -1) {
-      // Supprimez le produit du panier
       panier.splice(productIndex, 1);
-  
-      // Mettez à jour le localStorage avec le nouveau panier
       localStorage.setItem('panier', JSON.stringify(panier));
-    }
-  
-    // Récupérez l'élément parent (la carte de produit)
-    const productCard = event.target.closest('.carte');
-  
-    // Vérifiez si la carte existe
-    if (productCard) {
-      // Cachez l'élément parent (la carte de produit) en utilisant display: none
-      productCard.style.display = 'none';
-  
-      // Mettez à jour le point rouge après la suppression du produit
-      mettreAJourPointRouge();
+      afficherProduitsEtTotal(panier);
+      ajouterGestionnaireEffacer(); // Recharge les gestionnaires d'événements
     }
   }
-  
-  
 }
 
-
-function swipe() {
-  // Récupérez le tableau panier depuis le localStorage
-  const panier = JSON.parse(localStorage.getItem('panier')) || [];
-
-  // Vérifie si le panier est vide
-  if (panier.length === 0) {
-    // Effectuez une action si le panier est vide
-    var notif = document.getElementById('notif');
-    notif.innerText = '🍃 Panier vide !';
-    console.log('Le panier est vide.');
-  } else {
-    // Effectuez une action si le panier n'est pas vide
-    var notif = document.getElementById('notif');
-    notif.innerText = '';
-    window.location.href = '/regler';
-    console.log('Le panier n\'est pas vide.');
-  }
-}
 
