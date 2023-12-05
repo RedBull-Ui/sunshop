@@ -1,99 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-           <!-- Balise meta pour la description de la page (méta-description) -->
-           <meta name="description" content="Découvrez notre large gamme de compléments alimentaires">
+  <!-- Balise meta pour la description de la page (méta-description) -->
+  <meta name="description" content="Découvrez notre large gamme de compléments alimentaires">
 
-           <!-- Balise meta pour les mots-clés (méta-keywords) -->
-           <meta name="keywords" content="compléments alimentaires, Medical, santer">
-       
-           <!-- Balise meta pour l'auteur -->
-           <meta name="author" content="Sun shop">
-       
-           <!-- Balise meta pour la distribution -->
-           <meta name="distribution" content="global">
-       
-           <!-- Balise meta pour l'indexation des robots -->
-           <meta name="robots" content="index, follow">
-       
-           <!-- Balise meta pour le viewport (pour les appareils mobiles) -->
-           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
-    
-    <!-- awesome here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!-- google font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-    <!-- boostrap here  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Balise meta pour les mots-clés (méta-keywords) -->
+  <meta name="keywords" content="compléments alimentaires, Medical, santer">
 
-<!-- Les balises meta, les liens vers les styles CSS, etc. -->
-<link rel="stylesheet" href="/css/panier.css">
-    
-    <title>Mon panier</title>
-    <script>
-        localStorage.setItem('state','panier')
-    </script>
+  <!-- Balise meta pour l'auteur -->
+  <meta name="author" content="Sun shop">
+
+  <!-- Balise meta pour la distribution -->
+  <meta name="distribution" content="global">
+
+  <!-- Balise meta pour l'indexation des robots -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Balise meta pour le viewport (pour les appareils mobiles) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- awesome here -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+  <!-- boostrap here  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- favicon  -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+  <link rel="manifest" href="./img/site.webmanifest">
+  <!-- favicon  -->
+
+  <!-- Les balises meta, les liens vers les styles CSS, etc. -->
+  <link rel="stylesheet" href="/css/panier.css">
+
+  <title>Mon panier</title>
+  <script>
+    localStorage.setItem('state', 'panier')
+  </script>
 </head>
-<body>
-    <!-- Inclure votre en-tête, votre navigation, ou d'autres éléments communs ici -->
-    <%- include('composants/nav.ejs')  %>
 
-   <!-- <div class="hastag">
+<body>
+  <!-- Inclure votre en-tête, votre navigation, ou d'autres éléments communs ici -->
+  <%- include('composants/nav.ejs')  %>
+
+  <!-- <div class="hastag">
     <div class="overlay">
         #AchetezDesMaintenant
     </div>
    </div> -->
-   <br>
-   <div class="all">
-       
-       <div class="top" style="width: 100%; display: flex; ">
-           <div style="display: flex; align-items: start; justify-content: space-between; width: 100%;">
-                <button style="border: none; border-radius: 7px; color: black; height: 40px; width: 70px;" onclick="window.history.back()">Retour</button>
-                <h2>Mon panier 🛒</h2>
-            </div>
-            <!-- <div style="display: flex; align-items: end; justify-content: end; width: 100%;">
+  <br>
+  <div class="all">
+
+    <div class="top" style="width: 100%; display: flex; ">
+      <div style="display: flex; align-items: start; justify-content: space-between; width: 100%;">
+        <button style="border: none; border-radius: 7px; color: black; height: 40px; width: 70px;" onclick="window.history.back()">Retour</button>
+        <h2>Mon panier 🛒</h2>
+      </div>
+      <!-- <div style="display: flex; align-items: end; justify-content: end; width: 100%;">
                 <button class="bouton-commander" onclick="swipe()" style="margin-left: auto;">Commander maintenant</button>
             </div> -->
-        </div>
-        <hr>
-        <div class="row">
-            <h3 id="notif"></h3>
-        </div>
-        <hr>
-        <br>
-        <div style="display: flex; justify-content: space-between; padding: 5px;">
-            <span style="color: #B71C1C;" class="total-span">Total: </span>
-            <span style="font-size: 0.6rem;color: grey;">inclu frais de livraison <br> <strong style="color: #B71C1C;">(1000 CFA)</strong> </span>
-        </div>
-        <button class="bouton-commander" onclick="swipe()" style="margin-left: auto;">Commander maintenant</button>
-
     </div>
-    <!-- my footer here -->
-    <%- include('composants/footer.ejs')  %>
+    <hr>
+    <div class="row">
+      <h3 id="notif"></h3>
+    </div>
+    <hr>
+    <br>
+    <div style="display: flex; justify-content: space-between; padding: 5px;">
+      <span style="color: #B71C1C;" class="total-span">Total: </span>
+      <span style="font-size: 0.6rem;color: grey;">inclu frais de livraison <br> <strong style="color: #B71C1C;">(1000 CFA)</strong> </span>
+    </div>
+    <button class="bouton-commander" onclick="swipe()" style="margin-left: auto;">Commander maintenant</button>
 
-    <!-- my footer here -->
+  </div>
+  <!-- my footer here -->
+  <%- include('composants/footer.ejs')  %>
 
-    <!-- Inclure votre pied de page, vos boutons de paiement, etc. ici -->
+  <!-- my footer here -->
 
-    <!-- Les scripts JavaScript, y compris Bootstrap, GSAP, etc. -->
-    <script src="/script/index.js"></script>
+  <!-- Inclure votre pied de page, vos boutons de paiement, etc. ici -->
+
+  <!-- Les scripts JavaScript, y compris Bootstrap, GSAP, etc. -->
+  <script src="/script/index.js"></script>
 </body>
 <script src="/script/panier.js"></script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/64ac812894cf5d49dc62c113/1h50th2c3';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+  var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"),
+      s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/64ac812894cf5d49dc62c113/1h50th2c3';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+
 </html>

@@ -9,6 +9,13 @@
   <!-- Balise meta pour les mots-clés (méta-keywords) -->
   <meta name="keywords" content="compléments alimentaires, Medical, santer">
 
+  <!-- favicon  -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+  <link rel="manifest" href="./img/site.webmanifest">
+  <!-- favicon  -->
+
   <!-- Balise meta pour l'auteur -->
   <meta name="author" content="Sun shop">
 
@@ -27,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-  
+
   <!-- awesome here  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -46,8 +53,8 @@
   <br>
   <button type="button" class="btn btn-light" onclick="window.location.href='/boutique' ">Retour</button>
 
-    <br>
-    <h1 style="text-align: center;">Vaseline</h1> <br>
+  <br>
+  <h1 style="text-align: center;">Vaseline</h1> <br>
   <div class="row">
     <% vaseline.forEach((produit) => { %>
     <div class="col-md-3 product-card" data-categorie="tout" data-nom="<%= produit.nom %>" style="height: auto;">
@@ -114,11 +121,9 @@
 
 </body>
 <script>
-
   // Sélectionnez votre icône de panier (supposons que son ID est "icon-panier")
   const iconPanier = document.getElementById("sac2");
   const iconPanier2 = document.getElementById("sac");
-
 </script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
