@@ -17,8 +17,11 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Ajoutez le chemin relatif pour Font Awesome CSS
+// Add a route for Font Awesome CSS
 app.use('/fontawesome-free', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free')));
+
+// Use a different route for Bootstrap CSS
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,10 +30,6 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
   res.render('index.ejs');
 });
-
-// Vous pouvez utiliser Font Awesome dans vos fichiers de vue comme ceci :
-// <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
-
 
 app.get('/boutique', async (req, res) => {
   try {
