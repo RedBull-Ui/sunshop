@@ -1,28 +1,24 @@
 const express = require('express');
 const app = express();
-// const mysql = require('mysql2');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const path = require('path');
-const axios = require('axios'); // Importez Axios
+const axios = require('axios');
 const admin = require('firebase-admin');
-const { v4: uuidv4 } = require('uuid'); // Importe uuid
-
+const { v4: uuidv4 } = require('uuid');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-
-// Configuration de la connexion à la base de données 
-
-const serviceAccount = require('./sunshop.json'); // Remplacez par le chemin vers votre fichier de configuration Firebase
-
+const serviceAccount = require('./sunshop.json');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
 
+// Ajoutez le chemin relatif pour Font Awesome CSS
+app.use('/fontawesome-free', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +27,10 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
   res.render('index.ejs');
 });
+
+// Vous pouvez utiliser Font Awesome dans vos fichiers de vue comme ceci :
+// <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
+
 
 app.get('/boutique', async (req, res) => {
   try {
