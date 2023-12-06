@@ -105,26 +105,7 @@
 
   <script src="/script/index.js"></script>
 </body>
-<script>
-  // Vérifiez s'il y a au moins une clé Local Storage commençant par "produit_"
-  let hasProduitKeys = false;
-  for (let key in localStorage) {
-    if (key.startsWith("produit_")) {
-      hasProduitKeys = true;
-      break;
-    }
-  }
 
-  // Sélectionnez votre icône de panier (supposons que son ID est "icon-panier")
-  const iconPanier = document.getElementById("sac");
-
-  // Ajoutez ou supprimez la classe "point-rouge" en fonction de la condition
-  if (hasProduitKeys) {
-    iconPanier.classList.add("point-rouge");
-  } else {
-    iconPanier.classList.remove("point-rouge");
-  }
-</script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   var Tawk_API = Tawk_API || {},
